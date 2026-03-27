@@ -1,69 +1,289 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Network Intrusion Detection System — Noah Cosamano</title>
+  <title>NIDS Project — Noah Cosamano</title>
   <link rel="stylesheet" href="style.css">
-
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <nav>
-    <a href="index.html" class="logo">
-        <img src="media/home-button-white.png" alt="Logo">
-        <span>Home</span>
-    </a>
-
+    <a href="index.html" class="nav-link">Home</a>
     <div class="nav-links">
-        <a href="work.html">Work</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <div class="dropdown">
+            <a href="work.html" class="nav-link active">Work</a>
+            <div class="dropdown-content">
+                <a href="nids.html">NIDS</a>
+                <a href="buffer-overflow.html">Buffer Overflow</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="about.html" class="nav-link">About</a>
+            <div class="dropdown-content">
+                <a href="resume.html">Resume</a>
+                <a href="skills.html">Skills</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="contact.html" class="nav-link">Contact</a>
+            <div class="dropdown-content">
+                <a href="contact.html">Email</a>
+                <a href="https://www.linkedin.com/in/noah-cosamano-043843384/">LinkedIn</a>
+            </div>
+        </div>
     </div>
 </nav>
 
-<!-- PAGE HEADER -->
-<section class="project-hero">
+<section class="work-hero">
     <h1>Network Intrusion Detection System</h1>
-    <p>
-        A Python-based IDS detecting port scans, abnormal traffic,
-        and suspicious network activity, with a built-in interface
-        to monitor filtered traffic in real-time.
+    <h2>(Work in progress)</h2>
+    <p>Architecting a high-performance packet inspection engine using asynchronous processing to 
+        identify adversarial reconnaissance and anomalous network behavior in real-time.
     </p>
 </section>
 
-<!-- PROJECT DETAILS -->
-<section class="project-details">
+<section class="container" style="max-width: 800px; margin: auto; padding: 40px 20px;">
+    
+    <div class="card" style="transform: none; animation: none; margin-bottom: 40px;">
+        <h2>Project Overview</h2>
+        <p>This project demonstrates the design and implementation of a custom NIDS. It monitors live traffic, identifies patterns using Scapy, provides real-time alerts,
+            and offers the user an interface to inspect and filter network traffic in real-time.
+        </p>
+        
+        <h3 style="margin-top: 20px;">Key Features</h3>
+        <ul style="line-height: 1.8;">
+            <li>Detection of port scans, ICMP sweeps and unusual behavior.</li>
+            <li>Real-time visualization interface.</li>
+            <li>Packet filtering by port/protocol</li>
+            <li>Automated logging and alerting.</li>
+        </ul>
+    </div>
 
-    <h2>Overview</h2>
-    <p>
-        This project demonstrates the design and implementation of
-        a custom network intrusion detection system. It monitors
-        live network traffic, identifies suspicious patterns, and
-        provides real-time alerts for potential security threats.
-    </p>
+    <section class="technical-implementation">
+    <h1 class="section-title">Technical Implementation</h1>
+    <p class="intro-text">The system is built using <strong>Scapy</strong> for deep packet inspection and <strong>Python's threading</strong> library to manage concurrent 
+        data streams without UI degradation.</p>
 
-    <h2>Features</h2>
-    <ul>
-        <li>Detection of port scans and unusual traffic behavior.</li>
-        <li>Real-time traffic visualization interface.</li>
-        <li>Automated alerts and logging for suspicious activity.</li>
-        <li>Integration with Python scripts for extensibility.</li>
-    </ul>
+    <div class="impl-block">
+        <h3>1. Implementation of the Packet Class</h3>
+        <p>In order to track packets, raw packets which are captured directly from scapy must be converted into an 
+            organized format that is easy to track and reference when working with high network traffic.
+        <div class="code-container">
+  <pre><code>
+@dataclass
+class Packet:
+    dst_mac: Optional[str]                                              # Primarily for logging purposes 
+    src_mac: Optional[str]                                              # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    protocol: Optional[str]
+    type: Optional[int]                                                 # If applicable, will track ICMP request vs. reply
+    src_ip: Optional[str]                                               # Used in synergy with dst_port to track traffic frequency
+    dst_ip: Optional[str]                                               # Used to detect an ICMP sweep
+    src_port: Optional[int]    
+    dst_port: Optional[int]                                             # Used in synergy with src_ip to track traffic frequency
+    flags: Optional[str]                                                # Used to detect different types of TCP scans (ie. SYN, XMAS, NULL, etc.)
+    timestamp: float                                                    # For logging or tracking traffic frequency
+     
+    def __str__(self):                                                  # Allows packets to be printed neatly using 'print()'
+        parts = []                                                      # Stores all packet variables into a list
 
-    <h2>Tech Stack</h2>
-    <p>Python, Scapy, Tkinter (GUI), threading, queue management, network packet analysis.</p>
+        # Protocol header                                               
+        parts.append(f"[{self.protocol}]")
 
-    <h2>Links</h2>
-    <p>
-        <a href="path-to-your-github-or-demo" target="_blank">View Code / Demo →</a>
-    </p>
+        # IP layer
+        if self.src_ip and self.dst_ip:
+            parts.append(f"{self.src_ip} → {self.dst_ip}")
+
+        # Ports (for TCP/UDP)
+        if self.src_port is not None and self.dst_port is not None:
+            parts.append(f"{self.src_port} → {self.dst_port}")
+
+        # TCP flags
+        if self.flags:
+            parts.append(f"Flags={self.flags}")
+
+        # ICMP type
+        if self.protocol == "ICMP" and self.type is not None:
+            parts.append(f"Type={self.type}")
+
+        return " | ".join(parts)                                        # Connects all variables in list and returns it
+  </code></pre>
+</div>
+    </div>
+
+    <div class="impl-block">
+        <h3>2. Packet Capture Engine</h3>
+        <p>The core sniffing engine utilizes a non-blocking callback mechanism. By setting <code>store=False</code>, the system processes packets in seperate threads in
+             memory to maintain a low resource footprint during high-traffic bursts.</p>
+        <div class="code-container">
+  <pre><code>
+def capture(interface: str, pkt_queues: list[Queue[Packet]]): # * Note: capture takes a list of multiple packet queue's
+                                                              #   to have seperate but identical queues for each type of   
+                                                              #   scan in order to prevent race conditions from occuring.
+    sniff(
+        iface=interface,                                      #   ie. loopback, wifi, ethernet, etc.
+        filter="ip",
+        prn=lambda pkt: handle(pkt, pkt_queues),              #   Callback to handle function each time a packet is intercepted
+        store=0                                               #   So previous packets are cleared and ready for next one
+    )
+  </code></pre>
+</div>
+        <p>Packets are processed through queues in order to keep a first-in-first-out system. This ensures all
+            packets are processed in order and none are skipped over.
+        </p>
+        <div class="code-container">
+  <pre><code>
+def handle(raw_pkt, packet_queues: list[Queue[Packet]]):        # * Note: Raw packet is being processed into
+                                                                    the Packet class
+    if IP not in raw_pkt:                                       #   Packets must contain an IP to be processed
+        return
+
+    # MAC (safe)
+    src_mac = raw_pkt[Ether].src if Ether in raw_pkt else None  #   Fields default to None if not found in raw packet
+    dst_mac = raw_pkt[Ether].dst if Ether in raw_pkt else None
+
+    # IP
+    src_ip = raw_pkt[IP].src
+    dst_ip = raw_pkt[IP].dst
+    protocol = protocol_nums.get(raw_pkt[IP].proto, "DEFAULT")  #   Searches for protocol by number (ie. TCP: 6, ICMP: 1)
+
+    # Defaults
+    type = None                                                 #   All other fields initialized as None
+    src_port = None
+    dst_port = None
+    flags = None
+
+    # Transport layer handling
+    if TCP in raw_pkt:                                          
+        src_port = raw_pkt[TCP].sport
+        dst_port = raw_pkt[TCP].dport
+        flags = get_flags(raw_pkt)                              #   Only search for flags if protocol is TCP
+
+    elif UDP in raw_pkt:
+        src_port = raw_pkt[UDP].sport
+        dst_port = raw_pkt[UDP].dport
+
+    elif ICMP in raw_pkt:                                       #   ICMP packets have a type (reply/request)
+        type = get_type(raw_pkt)
+
+    pkt = Packet(                                               #   Initializes packet with all fields. Field is 
+                                                                    initialized as 'None' if not found in raw packet
+        dst_mac, src_mac, protocol,
+        type, src_ip, dst_ip, src_port, 
+        dst_port, flags, time()
+    )
+
+    for queue in packet_queues:                                 #   Loops through each packet queue passed in and adds
+                                                                    packet
+                                                                # * Note: All queues are identical, multiple queues are
+                                                                    used to prevent race conditions between elements
+        queue.put(pkt)
+  </code></pre>
+</div>
+    </div>
+
+    <div class="impl-block">
+        <h3>3. Multithreading & Concurrency</h3>
+        <p>To prevent the CLI from freezing and detection from running during heavy analysis, the sniffing process is decoupled from the main thread. 
+            This allows the user to interact with logs, detections to run, and capturing to happen all simultaneously with no interruption.
+        <div class="code-container">
+  <pre><code>                                                                          
+def main():
+    cli_packet_queue = queue.Queue()                                 #   Initializes and empty queue for each scan and cli
+    fast_scan_packet_queue = queue.Queue()
+    slow_scan_packet_queue = queue.Queue()
+    sweep_packet_queue = queue.Queue()
+    
+    cli_thread = threading.Thread(                                   #   Creates command line thread 
+        target=start_cli,
+        args=(cli_packet_queue,),
+        name="CLI",
+        daemon=False
+    )
+
+    capture_thread = threading.Thread(                               #   Creates capture thread for packet capture
+        target=capture,
+                                                                     # * Note: all queues are passed in to be filled
+        args=(loopback, [cli_packet_queue, fast_scan_packet_queue, slow_scan_packet_queue, sweep_packet_queue]),
+        name="CAPTURE",
+        daemon=False
+    )
+
+    fast_scan_thread = threading.Thread(                             #   Creates fast scan thread
+        target=detect_scan,
+        args=(fast_scan_packet_queue, 10, 20, 30),
+        name="FAST-SCAN",
+        daemon=False
+    )
+    
+    slow_scan_thread = threading.Thread(                             #   Creates slow scan thread
+        target=detect_scan,
+        args=(slow_scan_packet_queue, 60, 50, 30),
+        name="SLOW-SCAN",
+        daemon=False
+    )
+    
+    sweep_thread = threading.Thread(                                 #   Creates icmp sweep thread
+        target=detect_sweep,
+        args=(sweep_packet_queue, 5, 10, 300),
+        name="SWEEP",
+        daemon=False
+    )
+
+    cli_thread.start()                                               #   Begins all threads concurrently
+    capture_thread.start()
+    fast_scan_thread.start()
+    slow_scan_thread.start()
+    sweep_thread.start()
+
+main()
+  </code></pre>
+</div>
+
+<div class="screenshot-placeholder" style="margin-top: 30px;">
+            <img src="media/concurrency.png" alt="Threading and Concurrency Proof" style="width:100%; border-radius:10px; border: 1px solid #ddd; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <p class="caption" style="text-align: center; color: #666; font-style: italic; margin-top: 10px;">
+                [ Technical Proof: Execution of CAPTURE, CLI, and DETECTION threads operating concurrently on seperate queues. ]
+            </p>
+        </div>
+    </div>
+
+    <div class="impl-block">
+        <h3>4. Packet Analysis Interface</h3>
+        <p>The interface provides a granular view of every packet. Users can click individual entries to see the decoded layers (Ethernet, IP, TCP/UDP) and raw 
+            hex data.</p>
+        <div class="screenshot-placeholder">
+            <img src="path-to-your-interface-screenshot.png" alt="Interface View">
+            <p class="caption">[ Screenshot: Detailed packet inspection view ]</p>
+        </div>
+    </div>
+
+    <div class="impl-block">
+        <h3>5. Intelligent Alerting</h3>
+        <p>Using a signature-based detection logic, the system flags suspicious activity such as <strong>SYN scans</strong> or <strong>ICMP floods</strong>. 
+            Alerts are pushed to a dedicated high-priority queue for immediate user notification.</p>
+        <div class="screenshot-placeholder">
+            <img src="path-to-your-alerts-screenshot.png" alt="Alerts Notification">
+            <p class="caption">[ Screenshot: Security alert triggered by a port scan attempt ]</p>
+        </div>
+    </div>
+
+    <div class="impl-block">
+        <h3>6. Persistent Logging & Results</h3>
+        <p>All captured events are written to a structured log file (JSON/CSV) for post-mortem analysis. Below is an example of the formatted output generated during 
+            a test simulation.</p>
+        <div class="results-box">
+            <code>
+                [2026-03-26 14:22:01] ALERT: Potential SYN Scan detected from 192.168.1.5 <br>
+                [2026-03-26 14:22:05] LOG: Captured 452 packets; Avg throughput 1.2MB/s <br>
+                [2026-03-26 14:23:10] SYSTEM: Log file saved to /logs/nids_report_0326.csv
+            </code>
+        </div>
+    </div>
+</section>
 
 </section>
 
-<!-- FOOTER -->
 <footer>
     <p>© 2026 Noah Cosamano</p>
 </footer>

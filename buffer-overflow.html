@@ -12,15 +12,32 @@
 
 <!-- NAVBAR -->
 <nav>
-    <a href="index.html" class="logo">
-        <img src="media/home-button-white.png" alt="Logo">
-        <span>Home</span>
-    </a>
+    <a href="index.html" class="nav-link">Home</a>
 
     <div class="nav-links">
-        <a href="work.html">Work</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <div class="dropdown">
+            <a href="work.html" class="nav-link">Work</a>
+            <div class="dropdown-content">
+                <a href="nids.html">NIDS</a>
+                <a href="buffer-overflow.html">Buffer Overflow</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <a href="about.html" class="nav-link">About</a>
+            <div class="dropdown-content">
+                <a href="resume.html">Resume</a>
+                <a href="skills.html">Skills</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <a href="contact.html" class="nav-link">Contact</a>
+            <div class="dropdown-content">
+                <a href="contact.html">Email</a>
+                <a href="https://www.linkedin.com/in/noah-cosamano-043843384/">LinkedIn</a>
+            </div>
+        </div>
     </div>
 </nav>
 
