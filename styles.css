@@ -1,0 +1,90 @@
+/* Color Scheme */
+:root {
+    /* Deep Neutrals - Moving away from dull grays */
+    --primary-background: #050505;   /* Near-black for maximum contrast */
+    --secondary-background: #0D0D0D; /* Slightly lighter for sections */
+    --elevated-surface: #161616;     /* For cards/hover states */
+
+    /* The "Cyber Red" Palette */
+    --primary-red: #FF3131;          /* A more vibrant, "Electric" red */
+    --hover-red: #FF5E5E;            /* Brighter for interactivity */
+    --dark-red: #8B0000;             /* For deep shadows/accents */
+
+    /* High-End Typography */
+    --primary-text: #FFFFFF;         /* Pure white for headings */
+    --secondary-text: #B0B0B0;       /* Light gray for body text */
+    --muted-text: #606060;           /* For small details/footer */
+
+    /* Structural Elements */
+    --borders: #252525;              /* Clean, thin borders */
+    --input-fields: #000000;         /* True black inputs */
+    --divider-lines: #1F1F1F;
+
+    /* Effects */
+    --red-glow: rgba(255, 49, 49, 0.2);
+    --shadow: rgba(0, 0, 0, 0.8);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Global Elements */
+body {
+    margin: 0;
+    background-color: var(--secondary-background);
+    font-family: sans-serif;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+
+    width: 100%;
+    height: 100px;
+
+    background-color: var(--secondary-background);
+}
+
+nav a {
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+
+    color: var(--primary-text);
+    font-size: 20px;
+    text-decoration: none;
+
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+nav .active {
+    color: var(--primary-red);
+    border-bottom: 2px solid var(--primary-red);
+}
+
+nav a:hover {
+    color: var(--primary-red);
+}
+
+hr {
+    border: none;
+    height: 1px;
+    margin: 0;
+    margin-bottom: 50px;
+    background-color: var(--divider-lines);
+}
+
+/* Home */
+.homeMain h1 {
+    width: 100%;
+    color: var(--primary-text);
+    text-align: center;
+}
+
+.homeMain .highlight {
+    color: var(--primary-red);
+}
