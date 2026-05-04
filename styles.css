@@ -32,7 +32,7 @@
 /* Global Elements */
 body {
     margin: 0;
-    background-color: var(--secondary-background);
+    background-color: var(--primary-background);
     font-family: sans-serif;
 }
 
@@ -46,6 +46,8 @@ nav {
     height: 100px;
 
     background-color: var(--secondary-background);
+
+    border-bottom: 2px solid var(--divider-lines);
 }
 
 nav a {
@@ -62,20 +64,80 @@ nav a {
 }
 
 nav .active {
-    color: var(--primary-red);
+    color: var(--hover-red);
     border-bottom: 2px solid var(--primary-red);
 }
 
 nav a:hover {
-    color: var(--primary-red);
+    color: var(--hover-red);
 }
 
 hr {
     border: none;
     height: 1px;
     margin: 0;
-    margin-bottom: 50px;
     background-color: var(--divider-lines);
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 100px;
+
+    position: relative;
+
+    padding: 50px 25px;
+    width: 100%;
+    min-height: 300px;
+    border-top: 2px solid var(--divider-lines);
+    background-color: var(--secondary-background);
+    margin-top: 50px;
+}
+
+footer div {
+    height: 100%;
+    width: 300px;
+}
+
+footer div ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+footer div h3 {
+    color: var(--primary-red);
+    margin: 0px;
+}
+
+footer div a {
+    display: flex;
+    gap: 10px;
+    color: var(--muted-text);
+    font-size: 15px;
+    text-decoration: none;
+
+    transition: color 0.3s ease;
+}
+
+footer i {
+    width: 20px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+footer div p {
+    color: var(--muted-text);
+    font-size: 15px;
+}
+
+footer div a:hover {
+    color: var(--hover-red);
 }
 
 /* Home */
@@ -87,4 +149,124 @@ hr {
 
 .homeMain .highlight {
     color: var(--primary-red);
+}
+
+/* Contact Me */
+.contactMain form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    
+    width: 100%;
+    height: 500px;
+
+    padding: 50px;
+    
+    background-color: var(--primary-background);
+}
+
+.contactMain form input {
+    background-color: var(--input-fields);
+    color: var(--primary-text);
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+
+    transition: 0.3s ease;
+}
+
+.contactMain form textarea {
+    background-color: var(--input-fields);
+    color: var(--primary-text);
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    height: 100%;
+    resize: none;
+
+    transition: 0.3s ease;
+}
+
+.contactMain form input:focus,
+.contactMain form textarea:focus {
+    outline: 2px solid var(--hover-red);
+    outline-offset: -2px;
+    transform: scale(1.025);
+}
+
+.contactMain form p {
+    color: var(--muted-text);
+    font-family: sans-serif;
+    font-size: 14px;
+    margin: 8px;
+    margin-bottom: 15px;
+}
+
+.contactMain form button {
+    margin: auto;
+    margin-top: 25px;
+    width: 25%;
+    height: 20%;
+
+    background-color: var(--primary-red);
+    color: var(--primary-text);
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+
+    transition: 0.3s ease;
+}
+
+.contactMain form button:hover {
+    transform: translateY(-5px) scale(1.05);
+    background-color: var(--primary-background);
+    border: 2px solid var(--primary-red);
+    color: var(--primary-red);
+}
+
+.contactMain div ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+    list-style: none;
+    padding: 20px 0;
+}
+
+.contactMain div a {
+    display: flex;
+    gap: 10px;
+    color: var(--secondary-text);
+    font-size: 25px;
+    text-decoration: none;
+
+    transition: color 0.3s ease;
+}
+
+.contactMain div a:hover {
+    color: var(--hover-red);
+}
+
+/* Mobile Adjustments */
+@media screen and (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        height: 150px;
+        gap: 0px;
+    }
+
+    .contactMain form button {
+        width: 50%;
+        height: 15%;
+    }
+
+    .contactMain div ul {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 25px
+    }
 }
