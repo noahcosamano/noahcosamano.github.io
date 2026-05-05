@@ -147,8 +147,80 @@ footer div a:hover {
     text-align: center;
 }
 
+.homeMain h2 {
+    width: 450px;
+    color: var(--secondary-text);
+    text-align: center;
+    margin: auto;
+    font-size: 18px;
+}
+
+.homeMain a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    width: 250px;
+    height: 50px;
+    margin: auto;
+    margin-top: 25px;
+
+    color: var(--primary-text);
+    background-color: var(--primary-red);
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 20px;
+    letter-spacing: 1px;
+
+    transition: transform 0.3s ease;
+}
+
+.homeMain a:hover {
+    transform: scale(1.05) translateY(-5px);
+    color: var(--hover-red);
+    border: 2px solid var(--hover-red);
+    background-color: var(--primary-background);
+}
+
 .homeMain .highlight {
     color: var(--primary-red);
+}
+
+.resume {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 300px;
+    width:500px;
+    margin: auto;
+    margin-top: 100px;
+    padding: 10px;
+
+    border-radius: 25px;
+    background-color: var(--elevated-surface);
+}
+
+.resume h3 {
+    color: var(--primary-text);
+    font-size: 25px;
+}
+
+.resume .fa-file-lines {
+    color: var(--dark-red);
+    font-size: 60px;
+}
+
+.resume p {
+    font-size: 15px;
+    color: var(--muted-text);
+    margin: 5px;
+}
+
+.resume a {
+    margin: 25px;
 }
 
 /* Contact Me */
@@ -162,7 +234,7 @@ footer div a:hover {
 
     padding: 50px;
     
-    background-color: var(--primary-background);
+    background-color: var(--elevated-surface);
 }
 
 .contactMain form input {
@@ -253,6 +325,14 @@ footer div a:hover {
         flex-direction: column;
         height: 150px;
         gap: 0px;
+    }
+
+    .homeMain h2 {
+        width: 350px;
+    }
+
+    .resume {
+        width: 300px
     }
 
     .contactMain form button {
