@@ -36,6 +36,10 @@ body {
     font-family: sans-serif;
 }
 
+.highlight {
+    color: var(--primary-red);
+}
+
 nav {
     display: flex;
     align-items: center;
@@ -77,6 +81,75 @@ hr {
     height: 1px;
     margin: 0;
     background-color: var(--divider-lines);
+}
+
+form input {
+    background-color: var(--input-fields);
+    color: var(--primary-text);
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+
+    transition: 0.3s ease;
+}
+
+form select, option {
+    background-color: var(--input-fields);
+    color: var(--primary-text);
+    padding: 10px;
+    border: none;
+
+    transition: 0.3s ease;
+}
+
+form textarea {
+    background-color: var(--input-fields);
+    color: var(--primary-text);
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    height: 100%;
+    resize: none;
+
+    transition: 0.3s ease;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+    outline: 2px solid var(--hover-red);
+    outline-offset: -2px;
+    transform: scale(1.025);
+}
+
+form p {
+    color: var(--muted-text);
+    font-family: sans-serif;
+    font-size: 14px;
+    margin: 8px;
+    margin-bottom: 15px;
+}
+
+form button {
+    margin: auto;
+    margin-top: 25px;
+    width: 25%;
+    height: 20%;
+
+    background-color: var(--primary-red);
+    color: var(--primary-text);
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+
+    transition: 0.3s ease;
+}
+
+form button:hover {
+    transform: translateY(-5px) scale(1.05);
+    background-color: var(--primary-background);
+    border: 2px solid var(--primary-red);
+    color: var(--primary-red);
 }
 
 footer {
@@ -183,10 +256,6 @@ footer div a:hover {
     background-color: var(--primary-background);
 }
 
-.homeMain .highlight {
-    color: var(--primary-red);
-}
-
 .resume {
     display: flex;
     flex-direction: column;
@@ -237,65 +306,6 @@ footer div a:hover {
     background-color: var(--elevated-surface);
 }
 
-.contactMain form input {
-    background-color: var(--input-fields);
-    color: var(--primary-text);
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-
-    transition: 0.3s ease;
-}
-
-.contactMain form textarea {
-    background-color: var(--input-fields);
-    color: var(--primary-text);
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    height: 100%;
-    resize: none;
-
-    transition: 0.3s ease;
-}
-
-.contactMain form input:focus,
-.contactMain form textarea:focus {
-    outline: 2px solid var(--hover-red);
-    outline-offset: -2px;
-    transform: scale(1.025);
-}
-
-.contactMain form p {
-    color: var(--muted-text);
-    font-family: sans-serif;
-    font-size: 14px;
-    margin: 8px;
-    margin-bottom: 15px;
-}
-
-.contactMain form button {
-    margin: auto;
-    margin-top: 25px;
-    width: 25%;
-    height: 20%;
-
-    background-color: var(--primary-red);
-    color: var(--primary-text);
-    cursor: pointer;
-    border: none;
-    border-radius: 10px;
-
-    transition: 0.3s ease;
-}
-
-.contactMain form button:hover {
-    transform: translateY(-5px) scale(1.05);
-    background-color: var(--primary-background);
-    border: 2px solid var(--primary-red);
-    color: var(--primary-red);
-}
-
 .contactMain div ul {
     display: flex;
     align-items: center;
@@ -315,8 +325,71 @@ footer div a:hover {
     transition: color 0.3s ease;
 }
 
+.contactMain i {
+    width: 20px;
+    text-align: center;
+    margin-right: 10px;
+}
+
 .contactMain div a:hover {
     color: var(--hover-red);
+}
+
+/* Become A Client */
+.qa {
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 750px;
+    margin: auto;
+    margin-top: 50px;
+    padding: 50px;
+
+    background-color: var(--elevated-surface);
+    border-radius: 25px;
+}
+
+.qa h2 {
+    color: var(--primary-text);
+    margin: 10px;
+    text-align: center;
+}
+
+.qa p {
+    color: var(--secondary-text);
+    margin: 0;
+}
+
+.qa label {
+    color: var(--primary-text);
+    margin-top: 20px;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.qa input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.qa textarea {
+    height: 300px;
+}
+
+.qa button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 25px;
+    width: 200px;
+    height: 30px;
+
+    border-radius: 10px;
 }
 
 /* Mobile Adjustments */
@@ -343,6 +416,11 @@ footer div a:hover {
     .contactMain div ul {
         flex-direction: column;
         gap: 25px;
+    }
+
+    .qa {
+        width: 90%;
+        padding: 10px;
     }
 
     footer {

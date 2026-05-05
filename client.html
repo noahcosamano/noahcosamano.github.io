@@ -19,6 +19,68 @@
 </nav>
 <hr>
 
+<main class="clientMain">
+    <form class="qa">
+        <h2>Fill out this quick form for a free quote</h2>
+        <p>Required fields are labeled with a <span class="highlight">*</span></p>
+        <label for="name">Enter full name <span class="highlight">*</span></label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Enter email <span class="highlight">*</span></label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="business">Enter business name <span class="highlight">*</span></label>
+        <input type="text" id="business" name="business" required>
+
+        <label for="url">Enter current website URL</label>
+        <input type="text" id="url" name="url">
+
+        <label for="service">Select a service <span class="highlight">*</span></label>
+        <select name="service" id="service" size="1" multiple required>
+            <option value="" disabled>Select at least one</option>
+            <option value="new">New Website</option>
+            <option value="redesign">Website Redesign</option>
+            <option value="audit">Security Audit</option>
+            <option value="maintenance">Maintenance/Hosting</option>
+        </select>
+
+        <label for="timeline">Select a timeline <span class="highlight">*</span></label>
+        <select name="timeline" id="timeline" size="1" required>
+            <option value="" disabled selected>Select a timeline</option>
+            <option value="asap">ASAP</option>
+            <option value="one">1-3 months</option>
+            <option value="three">3-6 months</option>
+            <option value="six">6+ months</option>
+        </select>
+
+        <label for="requirements">Select other requirements</label>
+        <select name="requirements" id="requirements" size="1" multiple>
+            <option value="logins">User Accounts</option>
+            <option value="payments">Payment Processing</option>
+            <option value="forms">Contact Forms</option>
+            <option value="database">Database Storage</option>
+        </select>
+
+        <label for="budget">Select budget range <span class="highlight">*</span></label>
+        <select name="budget" id="budget" size="1" required>
+            <option value="" disabled selected>Select budget range</option>
+            <option value="low">$250 - $500</option>
+            <option value="medium">$500 - $1,000</option>
+            <option value="high">$1,000 - $2,500</option>
+            <option value="extreme">$2,500+</option>
+            <option value="unknown">I'm not sure yet</option>
+        </select>
+
+        <label for="concerns">Security Concerns</label>
+        <input type="text" id="concerns" name="concerns">
+
+        <label for="other">Other Information</label>
+        <textarea id="other" name="other"></textarea>
+
+        <button type="submit">Submit Form</button>
+    </form>
+</main>
+
 <footer>
     <div>
         <h3>Noah Cosamano</h3>
