@@ -267,13 +267,12 @@ footer div a:hover {
 .aboutMe {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 40px;
 
-    width: 1000px;
+    width:90%;
+    max-width: 1000px;
     height: 100%;
-
-    margin: 0px;
-    padding: 25px;
+    padding: 40px;
 
     border-radius: 25px;
     background-color: var(--elevated-surface);
@@ -288,7 +287,7 @@ footer div a:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100%;
+    flex-grow: 1;
 }
 
 .aboutMe .content h3 {
@@ -301,6 +300,11 @@ footer div a:hover {
     color: var(--secondary-text);
     font-size: 20px;
     margin: 0px;
+}
+
+.aboutMe .content p {
+    color: var(--primary-text);
+    font-size: 15px;
 }
 
 .resume {
@@ -464,6 +468,10 @@ footer div a:hover {
 
     .aboutMe img {
         height: 250px;
+    }
+
+    .aboutMe .content {
+        margin-right: 0px;
     }
 
     .resume {
