@@ -220,7 +220,7 @@ footer div a:hover {
     text-align: center;
 }
 
-.homeMain h2 {
+.homeMain .goal {
     width: 450px;
     color: var(--secondary-text);
     text-align: center;
@@ -256,17 +256,62 @@ footer div a:hover {
     background-color: var(--primary-background);
 }
 
+.rowOne {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 100px;
+
+    height: 400px;
+}
+
+.aboutMe {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    width: 1000px;
+    height: 100%;
+
+    margin: 0px;
+    padding: 25px;
+
+    border-radius: 25px;
+    background-color: var(--elevated-surface);
+}
+
+.aboutMe img {
+    height: 300px;
+    border-radius: 50%;
+} 
+
+.aboutMe .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.aboutMe .content h3 {
+    color: var(--primary-text);
+    font-size: 30px;
+    margin: 0px;
+}
+
+.aboutMe .content h4 {
+    color: var(--secondary-text);
+    font-size: 20px;
+    margin: 0px;
+}
+
 .resume {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 25px;
 
-    height: 300px;
-    width:500px;
-    margin: auto;
-    margin-top: 100px;
-    padding: 10px;
+    width:500px;    
+    height: 100%;
 
     border-radius: 25px;
     background-color: var(--elevated-surface);
@@ -279,7 +324,7 @@ footer div a:hover {
 
 .resume .fa-file-lines {
     color: var(--dark-red);
-    font-size: 60px;
+    font-size: 80px;
 }
 
 .resume p {
@@ -400,12 +445,31 @@ footer div a:hover {
         gap: 0px;
     }
 
-    .homeMain h2 {
+    .homeMain .goal {
         width: 350px;
     }
 
+    .rowOne {
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .aboutMe {
+        flex-direction: column;
+        width: 90%;
+        height: auto;
+    }
+
+    .aboutMe img {
+        height: 250px;
+    }
+
     .resume {
-        width: 300px
+        width: 90%;
+        height: auto;
+        padding: 40px 20px;
     }
 
     .contactMain form button {
