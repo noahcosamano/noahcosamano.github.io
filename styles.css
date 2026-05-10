@@ -29,6 +29,99 @@
     box-sizing: border-box;
 }
 
+/* Under Construction Styles */
+.construction-page {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('media/circuit-bg.png') #000;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.maintenance-box {
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid var(--primary-red);
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.3);
+}
+
+.status-header {
+    color: var(--primary-red);
+    margin-bottom: 25px;
+}
+
+.status-header h2 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+.terminal-window {
+    background: #0a0a0a;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: left;
+    margin-bottom: 25px;
+    border: 1px solid #333;
+}
+
+.command {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+.progress-container {
+    width: 100%;
+    height: 10px;
+    background: #1a1a1a;
+    margin-top: 15px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 65%;
+    height: 100%;
+    background: var(--primary-red);
+    box-shadow: 0 0 10px var(--primary-red);
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+.description {
+    color: var(--secondary-text);
+    margin-bottom: 30px;
+    font-family: sans-serif;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 25px;
+    background: var(--primary-red);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+    font-family: sans-serif;
+}
+
+.back-btn:hover {
+    transform: scale(1.05);
+    background: #d40000;
+}
+
 /* Global Elements */
 body {
     margin: 0;
@@ -57,6 +150,7 @@ body::before {
 
 .highlight {
     color: var(--primary-red);
+    margin: 0;
 }
 
 nav {
@@ -247,7 +341,7 @@ footer div a:hover {
     font-size: 18px;
 }
 
-.homeMain a {
+.homeMain .quote {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -268,7 +362,7 @@ footer div a:hover {
     transition: transform 0.3s ease;
 }
 
-.homeMain a:hover {
+.homeMain .quote:hover {
     transform: scale(1.05) translateY(-5px);
     color: var(--hover-red);
     border: 2px solid var(--hover-red);
@@ -288,9 +382,10 @@ footer div a:hover {
     border: 2px solid var(--dark-red);
     box-shadow: 0 4px 6px var(--red-glow);
 }
+
 .rowOne section:hover {
     transform: translateY(-5px) scale(1.03);
-    box-shadow: 0 8px 12px var(--dark-red);
+    box-shadow: 0 8px 12px var(--red-glow);
 }
 
 .aboutMe {
@@ -367,7 +462,53 @@ footer div a:hover {
 }
 
 .resume a {
-    margin: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    width: 250px;
+    height: 50px;
+    margin: auto;
+    margin-top: 25px;
+
+    color: var(--primary-text);
+    background-color: var(--primary-red);
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 20px;
+    letter-spacing: 1px;
+
+    transition: transform 0.3s ease;
+}
+
+.resume a:hover {
+    transform: scale(1.05) translateY(-5px);
+    color: var(--hover-red);
+    border: 2px solid var(--hover-red);
+    background-color: var(--primary-background);
+}
+
+.rowTwo {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 100px;
+
+    height: 300px;
+}
+
+.rowTwo .socials {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--elevated-surface);
+    padding: 0;
+    margin: 0;
+}
+
+.rowTwo .socials a {
+    display: flex;
+    background-color: white;
+    margin: 0;
 }
 
 /* Contact Me */
@@ -470,6 +611,110 @@ footer div a:hover {
     border-radius: 10px;
 }
 
+/* Cybersecurity */
+.cyberMain .projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+
+    margin: auto;
+    margin-top: 100px;
+
+    width: 50%;
+}
+
+.projects .project {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--elevated-surface);
+    padding: 20px;
+    width: 100%;
+    border: 2px solid var(--dark-red);
+    border-radius: 25px;
+
+    box-shadow: 0 4px 6px var(--red-glow);
+
+    transition: 0.3s ease;
+}
+
+.projects .project:hover {
+    transform: scale(1.03) translateY(-5px);
+    box-shadow: 0 8px 12px var(--red-glow);
+}
+
+.projects .project h4 {
+    font-size: 15px;
+}
+
+.projects .project h3 {
+    color: var(--primary-text);
+    margin: 0;
+}
+
+.projects .project p {
+    color: var(--primary-text);
+    margin-right: 25px;
+}
+
+.projects .project .buttons {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.projects .project .buttons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    font-size: 18px;
+
+    width: 180px;
+    height: 50px;
+}
+
+.projects .project .buttons a:first-child {
+    background-color: var(--primary-red);
+    color: var(--primary-text);
+    border-radius: 10px;
+
+    box-shadow: 0 4px 6px var(--red-glow);
+
+    transition: 0.3s ease;
+}
+
+.projects .project .buttons a:not(:first-child) {
+    border: 2px solid var(--primary-red);
+    border-radius: 10px;
+    color: var(--secondary-text);
+
+    transition: 0.3s ease;
+}
+
+.projects .project .buttons a:hover {
+    transform: scale(1.05) translateY(-5px);
+
+    box-shadow: 0 8px 12px var(--red-glow);
+}
+
+.projects .project img {
+    display: block;
+    margin-left: auto;
+    height: 200px;
+    width: 300px;
+    border-radius: 15px;
+
+    transition: 0.3s ease;
+}
+
+.projects .project img:hover {
+    transform: scale(1.8);
+}
+
 /* Mobile Adjustments */
 @media screen and (max-width: 768px) {
     nav {
@@ -507,6 +752,42 @@ footer div a:hover {
         width: 90%;
         height: auto;
         padding: 40px 20px;
+    }
+
+    .cyberMain .projects {
+        width: 90%;
+    }
+
+    .projects .project {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .projects .project .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .projects .project .buttons a {
+        width: 100%;   
+        max-width: 280px; 
+        height: 55px; 
+    }
+
+    .projects .project img {
+        width: 100%;
+        max-width: 400px;
+        margin-top: 20px;
+        order: 2;
+    }
+
+    .projects .project img:hover {
+        transform: scale(1);
     }
 
     .contactMain form button {
