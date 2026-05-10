@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AmanoWatch IDS - Noah Cosamano</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="amanowatch.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+<nav>
+    <a href="index.html">Home</a>
+    <a href="cybersecurity.html">Cybersecurity</a>
+    <a href="webdev.html">Web Dev</a>
+    <a href="client.html">Become a Client</a>
+    <a href="contactme.html">Contact Me</a>
+</nav>
+
+<header class="project-detail-header">
+    <h4 class="highlight">Project Deep Dive</h4>
+    <h1 style="color:white">AmanoWatch IDS</h1>
+    <p class="goal" style="color:white">
+        A comprehensive Intrusion Detection System for real-time network monitoring and 
+        threat analysis.
+    </p>
+    
+    <div class="tech-stack">
+        <span class="tech-badge">Python</span>
+        <span class="tech-badge">C</span>
+        <span class="tech-badge">Pcap</span>
+        <span class="tech-badge">Network Security</span>
+        <span class="tech-badge">Socket Programming</span>
+        <span class="tech-badge">Packet Dissection</span>
+        <span class="tech-badge">Threat Detection</span>
+        <span class="tech-badge">Incident Response</span>
+        <span class="tech-badge">Concurrency</span>
+        <span class="tech-badge">Performance Engineering</span>
+    </div>
+</header>
+
+<main class="project-container">
+    <div class="detail-grid">
+        <section class="detail-card">
+            <h3><i class="fa-solid fa-gears"></i> Technical Overview</h3>
+            <p style="color: var(--secondary-text);">
+                AmanoWatch is designed to sit at the edge of a network or on a host machine to analyze 
+                incoming and outgoing traffic. By utilizing a custom C-based pcap integration and Python's 
+                Scapy library, packets are decapsulated layer-by-layer to identify malicious signatures and anomalies.
+            </p>
+            <div class="buttons" style="margin-top: 20px;">
+                <a href="https://github.com/noahcosamano/AmanoWatch" target="_blank" style="text-decoration: none; color: var(--primary-red); border: 1px solid var(--primary-red); padding: 10px 20px; border-radius: 10px; display: inline-block; transition: 0.3s;">
+                    <i class="fa-brands fa-github"></i> View Source Code
+                </a>
+            </div>
+        </section>
+
+        <section class="detail-card">
+            <h3><i class="fa-solid fa-shield-halved"></i> Key Detections</h3>
+            <ul class="features-list">
+                <li><i class="fa-solid fa-circle"></i> ARP Spoofing & Cache Poisoning</li>
+                <li><i class="fa-solid fa-circle"></i> ICMP Tunneling & Ping Sweeps</li>
+                <li><i class="fa-solid fa-circle"></i> DNS Tunneling Detection</li>
+                <li><i class="fa-solid fa-circle"></i> Stealthy Port Scanning (TCP/UDP)</li>
+                <li><i class="fa-solid fa-circle"></i> Brute Force Attempt Tracking</li>
+            </ul>
+        </section>
+    </div>
+
+    <section class="project-detail-section" style="margin-top: 50px;">
+        <div class="detail-grid" style="align-items: center;">
+            <div class="gui-content">
+                <h4 class="highlight">The User Experience</h4>
+                <h3>Lightweight Desktop Interface</h3>
+                <p style="color: var(--secondary-text);">
+                    AmanoWatch features a custom-built GUI designed for speed and clarity. Built using <strong>PyQt</strong> and themed 
+                    to match a high-contrast terminal environment, the interface provides security professionals with a clean look at chaotic 
+                    network traffic.
+                </p>
+                <ul class="features-list">
+                    <li><i class="fa-solid fa-bolt"></i> <strong>Live Dashboard:</strong> Real-time packet updates without system lag.</li>
+                    <li><i class="fa-solid fa-filter"></i> <strong>Smart Filtering:</strong> Quickly isolate traffic by IP, Protocol, or Threat Level.</li>
+                    <li><i class="fa-solid fa-triangle-exclamation"></i> <strong>Visual Alerts:</strong> Critical threats are color-coded in "Cyber Red" for immediate recognition.</li>
+                </ul>
+            </div>
+            <div class="gui-image-container">
+                <img src="/media/amanowatch.png" alt="AmanoWatch GUI Screenshot" style="width: 100%; border-radius: 15px; border: 2px solid var(--dark-red); box-shadow: 0 0 20px var(--red-glow);">
+            </div>
+        </div>
+
+        <div class="full-width-content">
+            <h3 style="color: var(--primary-text);"><i class="fa-solid fa-code"></i> Building the Interface</h3>
+            <p style="color: var(--secondary-text);">
+                The primary challenge was ensuring the GUI remained responsive while processing high-volume network data. I implemented a 
+                multi-threaded architecture where the backend handles packet dissection while the frontend updates via a thread-safe queue, ensuring zero frame loss during high-throughput peaks.
+            </p>
+            <div class="tech-stack" style="justify-content: flex-start;">
+                <span class="tech-badge">Multithreading</span>
+                <span class="tech-badge">PyQt</span>
+                <span class="tech-badge">Event Queues</span>
+                <span class="tech-badge">Asynchronous I/O</span>
+                <span class="tech-badge">Non-Blocking UI</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="full-width-content">
+        <h3 style="color: var(--primary-text);">The "Honeyport" Feature</h3>
+        <p style="color: var(--secondary-text);">
+            One of the standout features of AmanoWatch is its integrated <strong>Honeyport</strong>. 
+            It opens listener sockets on commonly targeted but unused ports. Any connection attempt 
+            to these ports triggers an immediate high-priority alert, effectively flagging automated 
+            scanners and active attackers early in the reconnaissance phase.
+        </p>
+    </section>
+
+    <section class="full-width-content" style="border-left: 5px solid var(--hover-red); margin-bottom: 50px;">
+        <h3 style="color: var(--primary-text);">Logging & Forensics</h3>
+        <p style="color: var(--secondary-text);">
+            AmanoWatch doesn't just alert; it logs. Every detection is timestamped and categorized, 
+            allowing security professionals to perform post-incident forensic analysis. This helps in 
+            understanding attack patterns and hardening the network against future intrusions.
+        </p>
+    </section>
+
+    <div style="text-align: center;">
+        <a href="../cybersecurity.html" class="back-btn" style="text-decoration: none;">
+            <i class="fa-solid fa-arrow-left"></i> Back to Cybersecurity
+        </a>
+    </div>
+</main>
+
+<footer>
+    <div>
+        <h3>Noah Cosamano</h3>
+        <p>Cybersecurity Student & Web Developer.</p>
+        <p class="copyright">&copy; 2026 Noah Cosamano</p>
+    </div>
+    <div>
+        <ul>
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="cybersecurity.html">Cybersecurity</a>
+            <a href="webdev.html">Web Dev</a>
+            <a href="client.html">Become a Client</a>
+            <a href="contactme.html">Contact Me</a>
+        </ul>
+    </div>
+    <div>
+        <ul>
+            <h3>Get In Touch</h3>
+            <a href="mailto:bynoahcosamano@gmail.com">
+                <i class="fa-solid fa-envelope"></i>bynoahcosamano@gmail.com
+            </a>
+            <a href="https://www.linkedin.com/in/noah-cosamano-043843384/" target="_blank">
+                <i class="fa-brands fa-linkedin"></i>noahcosamano
+            </a>
+        </ul>
+    </div>
+</footer>
+</body>
+</html>

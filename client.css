@@ -1,0 +1,63 @@
+/* Become A Client */
+.qa {
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 750px;
+    margin: auto;
+    margin-top: 50px;
+    padding: 50px;
+
+    background-color: var(--elevated-surface);
+    border-radius: 25px;
+}
+
+.qa h2 {
+    color: var(--primary-text);
+    margin: 10px;
+    text-align: center;
+}
+
+.qa p {
+    color: var(--secondary-text);
+    margin: 0;
+}
+
+.qa label {
+    color: var(--primary-text);
+    margin-top: 20px;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.qa input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.qa textarea {
+    height: 300px;
+}
+
+.qa button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 25px;
+    width: 200px;
+    height: 30px;
+
+    border-radius: 10px;
+}
+
+@media screen and (max-width:768px) {
+    .qa {
+        width: 90%;
+        padding: 10px;
+    }
+}

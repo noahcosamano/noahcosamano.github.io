@@ -1,0 +1,151 @@
+/* Custom Styles for Project Detail Page */
+.project-detail-header {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(to bottom, var(--secondary-background), var(--primary-background));
+}
+
+.project-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center;
+    width: 100%;
+}
+
+.tech-badge {
+    background: var(--elevated-surface);
+    border: 1px solid var(--primary-red);
+    color: var(--primary-red);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    transition: 0.3s ease;
+}
+
+.tech-badge:hover {
+    background: var(--primary-red);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.detail-card {
+    background: var(--elevated-surface);
+    padding: 30px;
+    border-radius: 25px;
+    border: 1px solid var(--divider-lines);
+}
+
+.detail-card h3 {
+    color: var(--primary-red);
+    margin-top: 0;
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+}
+
+.features-list li {
+    color: var(--secondary-text);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.features-list i {
+    color: var(--primary-red);
+    font-size: 0.8rem;
+}
+
+.full-width-content {
+    margin-top: 40px;
+    padding: 30px;
+    background: var(--elevated-surface);
+    border-radius: 25px;
+    border-left: 5px solid var(--primary-red);
+}
+
+/* GUI Section Specifics */
+.gui-image-container {
+    perspective: 1000px;
+}
+
+.gui-image-container img {
+    transition: transform 0.5s ease;
+    transform: rotateY(-10deg) rotateX(5deg);
+}
+
+.gui-image-container img:hover {
+    transform: rotateY(0deg) rotateX(0deg) scale(1.02);
+}
+
+.gui-content h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--primary-text);
+}
+
+/* Back Button Styling */
+.back-btn {
+    display: inline-block;
+    margin-top: 60px;
+    padding: 12px 30px;
+    background: transparent;
+    color: var(--primary-red);
+    border: 2px solid var(--primary-red);
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+.back-btn i {
+    margin-right: 8px;
+    transition: transform 0.3s ease;
+}
+
+.back-btn:hover {
+    background: var(--primary-red);
+    color: white;
+    box-shadow: 0 0 20px rgba(255, 71, 71, 0.4);
+    transform: translateY(-3px);
+}
+
+.back-btn:hover i {
+    transform: translateX(-5px);
+}
+
+.back-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .detail-grid { 
+        grid-template-columns: 1fr; 
+    }
+    .gui-image-container img { 
+        transform: none; 
+    }
+    .project-detail-header {
+        padding: 40px 10px;
+    }
+}

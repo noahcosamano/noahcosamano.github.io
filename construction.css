@@ -1,0 +1,92 @@
+/* Under Construction Styles */
+.construction-page {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('media/circuit-bg.png') #000;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.maintenance-box {
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid var(--primary-red);
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.3);
+}
+
+.status-header {
+    color: var(--primary-red);
+    margin-bottom: 25px;
+}
+
+.status-header h2 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+.terminal-window {
+    background: #0a0a0a;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: left;
+    margin-bottom: 25px;
+    border: 1px solid #333;
+}
+
+.command {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+.progress-container {
+    width: 100%;
+    height: 10px;
+    background: #1a1a1a;
+    margin-top: 15px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 65%;
+    height: 100%;
+    background: var(--primary-red);
+    box-shadow: 0 0 10px var(--primary-red);
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+.description {
+    color: var(--secondary-text);
+    margin-bottom: 30px;
+    font-family: sans-serif;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 25px;
+    background: var(--primary-red);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+    font-family: sans-serif;
+}
+
+.back-btn:hover {
+    transform: scale(1.05);
+    background: #d40000;
+}
