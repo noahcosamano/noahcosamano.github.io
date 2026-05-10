@@ -93,7 +93,16 @@
     margin-left: auto;
     height: 200px;
     width: 300px;
+    border: 2px solid var(--red-glow);
     border-radius: 15px;
+    
+    transform: rotateY(-10deg) rotateX(5deg);
+
+    transition: 0.5s ease;
+}
+
+.projects .project img:hover {
+    transform: rotateY(0deg) rotateX(0deg) scale(1.02);
 }
 
 @media screen and (max-width: 768px) {
