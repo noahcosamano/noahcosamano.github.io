@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gh0stRat Forensic Report - Noah Cosamano</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="ghostrat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+<nav>
+    <a href="../index.html">Home</a>
+    <a href="../cybersecurity.html">Cybersecurity</a>
+    <a href="../webdev.html">Web Dev</a>
+    <a href="../client.html">Become a Client</a>
+    <a href="../contactme.html">Contact Me</a>
+</nav>
+
+<header class="project-detail-header">
+    <h4 class="highlight">Project Deep Dive</h4>
+    <h1 style="color:white">Gh0stRat Malware Analysis</h1>
+    <p class="goal" style="color:white">
+        A comprehensive forensic breakdown of the Gh0stRat Trojan, focusing on persistence 
+        mechanisms, obfuscation, and C2 communication.
+    </p>
+    
+    <div class="tech-stack">
+        <span class="tech-badge">Reverse Engineering</span>
+        <span class="tech-badge">Static Analysis</span>
+        <span class="tech-badge">Dynamic Analysis</span>
+        <span class="tech-badge">Ghidra</span>
+        <span class="tech-badge">x32dbg</span>
+        <span class="tech-badge">PEbear</span>
+        <span class="tech-badge">Yara</span>
+        <span class="tech-badge">Malware Forensics</span>
+    </div>
+</header>
+
+<main class="project-container">
+    <div class="detail-grid">
+        <section class="detail-card">
+            <h3><i class="fa-solid fa-microscope"></i> Analysis Overview</h3>
+            <p style="color: var(--secondary-text);">
+                This report details the lifecycle of a 32-bit Trojan (Gh0stRat variant). The analysis covers initial triage of the 92.2MB 
+                executable, identifying its architectural fingerprints, and dissecting its multi-stage execution flow.
+            </p>
+            <div class="buttons" style="margin-top: 20px;">
+                <a href="../media/ghostrat-report.pdf" target="_blank" download style="text-decoration: none; color: var(--primary-red); border: 1px solid var(--primary-red); padding: 10px 20px; border-radius: 10px; display: inline-block; transition: 0.3s;">
+                    <i class="fa-solid fa-file-pdf"></i> View Full PDF Report
+                </a>
+            </div>
+        </section>
+
+        <section class="detail-card">
+            <h3><i class="fa-solid fa-bug"></i> Forensic Artifacts</h3>
+            <ul class="features-list">
+                <li><i class="fa-solid fa-circle"></i> <strong>SHA256:</strong> 003734348d05ac8...</li>
+                <li><i class="fa-solid fa-circle"></i> <strong>Compile Time:</strong> June 14, 2012</li>
+                <li><i class="fa-solid fa-circle"></i> <strong>Evasion:</strong> %TEMP% Replication</li>
+                <li><i class="fa-solid fa-circle"></i> <strong>Encryption:</strong> XOR (Key 0x7)</li>
+                <li><i class="fa-solid fa-circle"></i> <strong>Persistence:</strong> Heartbeat Loop</li>
+            </ul>
+        </section>
+    </div>
+
+    <section class="project-detail-section" style="margin-top: 50px;">
+        <div class="detail-grid" style="align-items: center;">
+            <div class="gui-content">
+                <h4 class="highlight">Static & Dynamic Analysis</h4>
+                <h3>Dissecting the Core</h3>
+                <p style="color: var(--secondary-text);">
+                    Using <strong>Ghidra</strong> and <strong>x32dbg</strong>, I identified the malware's initialization sequence. The sample begins by fetching its module filename and replicating itself into a hidden directory (<code>_ir_sf_temp</code>) to evade standard system cleanups.
+                </p>
+                <ul class="features-list">
+                    <li><i class="fa-solid fa-bolt"></i> <strong>XOR Decoding:</strong> Manual reversal of the 128KB setup buffer.</li>
+                    <li><i class="fa-solid fa-filter"></i> <strong>API Hooking:</strong> Monitoring <code>Advapi32.dll</code> for SID capture.</li>
+                    <li><i class="fa-solid fa-triangle-exclamation"></i> <strong>Killswitch:</strong> Discovery of the <code>0x200</code> server command.</li>
+                </ul>
+            </div>
+            <div class="gui-image-container">
+                <img src="/media/ghostrat-analysis.png" alt="Ghidra Analysis Screenshot" style="width: 100%; border-radius: 15px; border: 2px solid var(--dark-red); box-shadow: 0 0 20px var(--red-glow);">
+            </div>
+        </div>
+
+        <div class="full-width-content">
+            <h3 style="color: var(--primary-text);"><i class="fa-solid fa-code"></i> Data Exfiltration Logic</h3>
+            <p style="color: var(--secondary-text);">
+                The malware targets specific system information, including Machine SIDs, Idle Times, and Connection Speeds. It formats this data into custom strings such as <code>__IRSID</code> and <code>__IRAOFF</code> before transmitting them to the C2 server via a heartbeat connection.
+            </p>
+            <div class="tech-stack" style="justify-content: flex-start;">
+                <span class="tech-badge">Token Querying</span>
+                <span class="tech-badge">SID Conversion</span>
+                <span class="tech-badge">C2 Heartbeat</span>
+                <span class="tech-badge">Exfiltration Protocols</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="full-width-content">
+        <h3 style="color: var(--primary-text);">The Debug Flag (/~DBG)</h3>
+        <p style="color: var(--secondary-text);">
+            A unique finding during the analysis was the presence of a <strong>/~DBG</strong> flag. This command-line argument acts as a developer safety net, allowing the author to test the malware's functionality without triggering the automatic self-deletion routines that occur upon failure.
+        </p>
+    </section>
+
+    <section class="full-width-content" style="border-left: 5px solid var(--hover-red); margin-bottom: 50px;">
+        <h3 style="color: var(--primary-text);">Detection & Yara Implementation</h3>
+        <p style="color: var(--secondary-text);">
+            To conclude the report, I developed a custom Yara rule to detect this specific Gh0stRat variant across an enterprise environment. By targeting unique strings like the temporary path and exfiltration formatting, the rule provides a high-fidelity detection method for SOC teams.
+        </p>
+    </section>
+
+    <div style="text-align: center;">
+        <a href="../cybersecurity.html" class="back-btn" style="text-decoration: none;">
+            <i class="fa-solid fa-arrow-left"></i> Back to Cybersecurity
+        </a>
+    </div>
+</main>
+
+<footer>
+    <div>
+        <h3>Noah Cosamano</h3>
+        <p>Cybersecurity Student & Web Developer.</p>
+        <p class="copyright">&copy; 2026 Noah Cosamano</p>
+    </div>
+    <div>
+        <ul>
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="cybersecurity.html">Cybersecurity</a>
+            <a href="webdev.html">Web Dev</a>
+            <a href="client.html">Become a Client</a>
+            <a href="contactme.html">Contact Me</a>
+        </ul>
+    </div>
+    <div>
+        <ul>
+            <h3>Get In Touch</h3>
+            <a href="contactme.html" target="_blank">
+                <i class="fa-solid fa-envelope"></i>bynoahcosamano@gmail.com
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61588930868883" target="_blank">
+                <i class="fa-brands fa-facebook"></i>noahcosamano
+            </a>
+            <a href="https://www.linkedin.com/in/noah-cosamano-043843384/" target="_blank">
+                <i class="fa-brands fa-linkedin"></i>noahcosamano
+            </a>
+            <a href="https://www.instagram.com/bynoahcosamano/" target="_blank">
+                <i class="fa-brands fa-instagram"></i>bynoahcosamano
+            </a>
+            <a href="https://www.x.com/bynoahcosamano/" target="_blank">
+                <i class="fa-brands fa-x-twitter"></i>bynoahcosamano
+            </a>
+            <a href="https://tinyurl.com/5d4n9275" target="_blank">
+                <i class="fa-solid fa-location-dot"></i>Syracuse, New York
+            </a>
+            <a href="index.html">
+                <i class="fa-solid fa-globe"></i>noahcosamano.com
+            </a>
+        </ul>
+    </div>
+</footer>
+</body>
+</html>
