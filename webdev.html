@@ -1,67 +1,346 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Noah Cosamano - Web Dev</title>
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noah Cosamano — Web Dev</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="webdev.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
 <body>
+
 <nav>
-    <a href="index.html">Home</a>
-    <a href="cybersecurity.html">Cybersecurity</a>
-    <a class="active" href="webdev.html">Web Dev</a>
-    <a href="client.html">Become a Client</a>
-    <a href="contactme.html">Contact Me</a>
+  <a href="index.html">Home</a>
+  <a href="cybersecurity.html">Cybersecurity</a>
+  <a class="active" href="webdev.html">Web Dev</a>
+  <a href="client.html">Become a Client</a>
+  <a href="contactme.html">Contact Me</a>
 </nav>
-<hr>
+
+<main class="webdevMain">
+
+  <!-- Page Header -->
+  <header class="page-header fade-up">
+    <span class="section-label">// web development</span>
+    <h1>Built for the Web</h1>
+    <p>Websites and applications designed with performance, security, and clean user experience at the core.</p>
+  </header>
+
+  <!-- Stats -->
+  <div class="stats-row fade-up" style="animation-delay:0.1s">
+    <div class="stat-card">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Projects Built</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">2</div>
+      <div class="stat-label">Active Clients</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Client Satisfaction</div>
+    </div>
+  </div>
+
+  <!-- Projects -->
+  <section class="projects-section">
+    <div class="projects-grid">
+
+      <!-- Project 1: Nail Website -->
+      <article class="project-card fade-up" style="animation-delay:0.15s">
+        <div class="card-thumb-placeholder">
+          <i class="fa-solid fa-hand-sparkles"></i>
+          <span>// nail-website</span>
+        </div>
+        <div class="card-body">
+          <span class="card-tag">// client project</span>
+          <h3 class="card-title">Nail Salon Website</h3>
+          <p class="card-desc">A custom website built for a nail salon, featuring a polished design, service menu, photo gallery, and contact booking form. Focused on an elegant, mobile-first experience.</p>
+          <div class="card-stack">
+            <span class="stack-badge">HTML</span>
+            <span class="stack-badge">CSS</span>
+            <span class="stack-badge">JavaScript</span>
+          </div>
+          <div class="card-links">
+            <a class="primary" href="#" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Site</a>
+            <a class="secondary" href="https://github.com/noahcosamano" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 2: This Portfolio -->
+      <article class="project-card fade-up" style="animation-delay:0.2s">
+        <div class="card-thumb-placeholder">
+          <i class="fa-solid fa-user-shield"></i>
+          <span>// portfolio-v1</span>
+        </div>
+        <div class="card-body">
+          <span class="card-tag">// personal project</span>
+          <h3 class="card-title">Personal Portfolio — noahcosamano.com</h3>
+          <p class="card-desc">This very site. A dark, cyber-aesthetic personal portfolio showcasing web development and cybersecurity work. Built from scratch with a focus on performance, clean code, and strong visual identity.</p>
+          <div class="card-stack">
+            <span class="stack-badge">HTML</span>
+            <span class="stack-badge">CSS</span>
+            <span class="stack-badge">JavaScript</span>
+            <span class="stack-badge">Formspree</span>
+          </div>
+          <div class="card-links">
+            <a class="primary" href="index.html"><i class="fa-solid fa-globe"></i> Live Site</a>
+            <a class="secondary" href="https://github.com/noahcosamano" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 3: Active Client (Confidential) -->
+      <article class="project-card wip fade-up" style="animation-delay:0.25s">
+        <div class="card-thumb-placeholder">
+          <i class="fa-solid fa-lock"></i>
+          <span>// confidential</span>
+        </div>
+        <div class="card-body">
+          <span class="card-tag">// active engagement</span>
+          <h3 class="card-title">Client Project — Confidential</h3>
+          <p class="card-desc">Currently in development for a real client. Full details will be shared upon project completion and client approval. Scope includes a custom website build with branding integration.</p>
+          <div class="card-stack">
+            <span class="stack-badge">TBD</span>
+          </div>
+          <div class="card-links">
+            <span class="wip-badge">In Progress</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section class="reviews-section">
+
+    <div class="reviews-header">
+      <div class="reviews-header-text">
+        <span class="section-label">// client reviews</span>
+        <h2>What People Say</h2>
+      </div>
+    </div>
+
+    <!-- Leave a Review Form -->
+    <div class="review-form-wrap fade-up">
+      <h3><i class="fa-solid fa-pen-to-square" style="color:var(--red-500);margin-right:10px"></i>Leave a Review</h3>
+      <div class="review-form">
+        <input type="text" id="reviewer-name" placeholder="Your name" maxlength="60">
+        <input type="text" id="reviewer-role" placeholder="Your role or relation (e.g. Client, Colleague)">
+        <div class="full-width star-picker">
+          <label>Rating</label>
+          <div class="stars">
+            <input type="radio" id="s5" name="rating" value="5"><label for="s5">&#9733;</label>
+            <input type="radio" id="s4" name="rating" value="4"><label for="s4">&#9733;</label>
+            <input type="radio" id="s3" name="rating" value="3"><label for="s3">&#9733;</label>
+            <input type="radio" id="s2" name="rating" value="2"><label for="s2">&#9733;</label>
+            <input type="radio" id="s1" name="rating" value="1"><label for="s1">&#9733;</label>
+          </div>
+        </div>
+        <textarea class="full-width" id="review-text" placeholder="Share your experience working with Noah..." maxlength="500"></textarea>
+        <div class="review-form-actions full-width">
+          <span class="form-note">Reviews are public and visible to all visitors.</span>
+          <button class="review-submit-btn" id="submit-review">
+            Submit Review <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reviews Display -->
+    <div class="reviews-grid" id="reviews-grid">
+      <div class="reviews-loading">
+        <i class="fa-solid fa-spinner fa-spin" style="margin-right:8px"></i>Loading reviews...
+      </div>
+    </div>
+
+  </section>
+
+</main>
 
 <footer>
-    <div>
-        <h3>Noah Cosamano</h3>
-        <p>Cybersecurity Student & Web Developer.</p>
-        <p class="copyright">&copy; 2026 Noah Cosamano</p>
-    </div>
-    <div>
-        <ul>
-            <h3>Quick Links</h3>
-            <a href="index.html">Home</a>
-            <a href="cybersecurity.html">Cybersecurity</a>
-            <a href="webdev.html">Web Dev</a>
-            <a href="client.html">Become a Client</a>
-            <a href="contactme.html">Contact Me</a>
-        </ul>
-    </div>
-    <div>
-        <ul>
-            <h3>Get In Touch</h3>
-            <a href="contactme.html" target="_blank">
-                <i class="fa-solid fa-envelope"></i>bynoahcosamano@gmail.com
-            </a>
-            <a href="https://www.facebook.com/profile.php?id=61588930868883" target="_blank">
-                <i class="fa-brands fa-facebook"></i>noahcosamano
-            </a>
-            <a href="https://www.linkedin.com/in/noah-cosamano-043843384/" target="_blank">
-                <i class="fa-brands fa-linkedin"></i>noahcosamano
-            </a>
-            <a href="https://www.instagram.com/bynoahcosamano/" target="_blank">
-                <i class="fa-brands fa-instagram"></i>bynoahcosamano
-            </a>
-            <a href="https://www.x.com/bynoahcosamano/" target="_blank">
-                <i class="fa-brands fa-x-twitter"></i>bynoahcosamano
-            </a>
-            <a href="https://tinyurl.com/5d4n9275" target="_blank">
-                <i class="fa-solid fa-location-dot"></i>Syracuse, New York
-            </a>
-            <a href="index.html">
-                <i class="fa-solid fa-globe"></i>noahcosamano.com
-            </a>
-        </ul>
-    </div>
+  <div>
+    <h3>Noah Cosamano</h3>
+    <p>Cybersecurity Student &amp; Web Developer.</p>
+    <p class="copyright">&copy; 2026 Noah Cosamano</p>
+  </div>
+  <div>
+    <h3>Quick Links</h3>
+    <ul>
+      <a href="index.html">Home</a>
+      <a href="cybersecurity.html">Cybersecurity</a>
+      <a href="webdev.html">Web Dev</a>
+      <a href="client.html">Become a Client</a>
+      <a href="contactme.html">Contact Me</a>
+    </ul>
+  </div>
+  <div>
+    <h3>Get In Touch</h3>
+    <ul>
+      <a href="contactme.html" target="_blank"><i class="fa-solid fa-envelope"></i>bynoahcosamano@gmail.com</a>
+      <a href="https://www.facebook.com/profile.php?id=61588930868883" target="_blank"><i class="fa-brands fa-facebook"></i>noahcosamano</a>
+      <a href="https://www.linkedin.com/in/noah-cosamano-043843384/" target="_blank"><i class="fa-brands fa-linkedin"></i>noahcosamano</a>
+      <a href="https://www.instagram.com/bynoahcosamano/" target="_blank"><i class="fa-brands fa-instagram"></i>bynoahcosamano</a>
+      <a href="https://www.x.com/bynoahcosamano/" target="_blank"><i class="fa-brands fa-x-twitter"></i>bynoahcosamano</a>
+      <a href="https://tinyurl.com/5d4n9275" target="_blank"><i class="fa-solid fa-location-dot"></i>Syracuse, New York</a>
+      <a href="index.html"><i class="fa-solid fa-globe"></i>noahcosamano.com</a>
+    </ul>
+  </div>
 </footer>
-</body>
 
+<script>
+  // ================================================================
+  //  SUPABASE CONFIG — fill these in after setup (see instructions)
+  //  Project Settings → API → Project URL & anon/public key
+  // ================================================================
+  const SUPABASE_URL  = 'https://qesmoycbqnffnooxusbw.supabase.co';
+  const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFlc21veWNicW5mZm5vb3h1c2J3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1OTY4NTEsImV4cCI6MjA5NDE3Mjg1MX0.9m7d4VMmp755lGZEEMf8uFEYQ4Y7C7FjF4r-UQAWgf4';
+  // ================================================================
+
+  const BASE    = `${SUPABASE_URL}/rest/v1/reviews`;
+  const HEADERS = {
+    'Content-Type':  'application/json',
+    'apikey':        SUPABASE_ANON,
+    'Authorization': `Bearer ${SUPABASE_ANON}`
+  };
+
+  // ── Helpers ──────────────────────────────────────────────────────
+
+  function starsHTML(n) {
+    return '★'.repeat(n) + '☆'.repeat(5 - n);
+  }
+
+  function formatDate(iso) {
+    return new Date(iso).toLocaleDateString('en-US', {
+      year: 'numeric', month: 'short', day: 'numeric'
+    });
+  }
+
+  function escapeHTML(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function showToast(msg, icon = 'fa-check-circle') {
+    const existing = document.querySelector('.toast');
+    if (existing) existing.remove();
+    const t = document.createElement('div');
+    t.className = 'toast';
+    t.innerHTML = `<i class="fa-solid ${icon}"></i>${msg}`;
+    document.body.appendChild(t);
+    setTimeout(() => {
+      t.classList.add('hide');
+      setTimeout(() => t.remove(), 300);
+    }, 3500);
+  }
+
+  // ── Render ───────────────────────────────────────────────────────
+
+  function renderReviews(reviews) {
+    const grid = document.getElementById('reviews-grid');
+    if (!reviews || reviews.length === 0) {
+      grid.innerHTML = `
+        <div class="reviews-empty">
+          <i class="fa-regular fa-comment-dots"></i>
+          No reviews yet — be the first to leave one!
+        </div>`;
+      return;
+    }
+    grid.innerHTML = reviews.map(r => `
+      <div class="review-card">
+        <div class="review-card-header">
+          <div class="reviewer-info">
+            <span class="reviewer-name">${escapeHTML(r.name)}</span>
+            ${r.role ? `<span class="reviewer-role">${escapeHTML(r.role)}</span>` : ''}
+          </div>
+          <div class="review-stars">${starsHTML(r.rating)}</div>
+        </div>
+        <p class="review-text">${escapeHTML(r.text)}</p>
+        <span class="review-date">${formatDate(r.created_at)}</span>
+      </div>
+    `).join('');
+  }
+
+  // ── Load from Supabase ───────────────────────────────────────────
+
+  async function loadReviews() {
+    try {
+      const res = await fetch(`${BASE}?select=*&order=created_at.desc`, {
+        headers: HEADERS
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      renderReviews(await res.json());
+    } catch (err) {
+      console.error('Failed to load reviews:', err);
+      document.getElementById('reviews-grid').innerHTML = `
+        <div class="reviews-empty">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          Couldn't load reviews right now. Try refreshing.
+        </div>`;
+    }
+  }
+
+  // ── Submit to Supabase ───────────────────────────────────────────
+
+  document.getElementById('submit-review').addEventListener('click', async () => {
+    const name     = document.getElementById('reviewer-name').value.trim();
+    const role     = document.getElementById('reviewer-role').value.trim();
+    const text     = document.getElementById('review-text').value.trim();
+    const ratingEl = document.querySelector('input[name="rating"]:checked');
+
+    if (!name)            return showToast('Please enter your name.', 'fa-triangle-exclamation');
+    if (!text)            return showToast('Please write a review.', 'fa-triangle-exclamation');
+    if (!ratingEl)        return showToast('Please select a star rating.', 'fa-triangle-exclamation');
+    if (text.length < 10) return showToast('Review is too short — say a bit more!', 'fa-triangle-exclamation');
+
+    const btn = document.getElementById('submit-review');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
+
+    try {
+      const res = await fetch(BASE, {
+        method:  'POST',
+        headers: { ...HEADERS, 'Prefer': 'return=representation' },
+        body: JSON.stringify({
+          name,
+          role:   role || null,
+          text,
+          rating: parseInt(ratingEl.value)
+        })
+      });
+
+      if (!res.ok) {
+        const errBody = await res.json().catch(() => ({}));
+        throw new Error(errBody.message || `HTTP ${res.status}`);
+      }
+
+      showToast('Review submitted — thank you!');
+
+      // Reset form
+      document.getElementById('reviewer-name').value = '';
+      document.getElementById('reviewer-role').value = '';
+      document.getElementById('review-text').value   = '';
+      document.querySelectorAll('input[name="rating"]').forEach(r => r.checked = false);
+
+      loadReviews(); // refresh list
+
+    } catch (err) {
+      console.error('Submit failed:', err);
+      showToast('Something went wrong. Try again.', 'fa-triangle-exclamation');
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = 'Submit Review <i class="fa-solid fa-paper-plane"></i>';
+    }
+  });
+
+  loadReviews();
+</script>
+
+</body>
 </html>
