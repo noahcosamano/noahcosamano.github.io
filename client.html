@@ -1,130 +1,147 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Noah Cosamano - Client</title>
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="client.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noah Cosamano — Become a Client</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="client.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
 <body>
+
 <nav>
-    <a href="index.html">Home</a>
-    <a href="cybersecurity.html">Cybersecurity</a>
-    <a href="webdev.html">Web Dev</a>
-    <a class="active" href="client.html">Become a Client</a>
-    <a href="contactme.html">Contact Me</a>
+  <a href="index.html">Home</a>
+  <a href="cybersecurity.html">Cybersecurity</a>
+  <a href="webdev.html">Web Dev</a>
+  <a class="active" href="client.html">Become a Client</a>
+  <a href="contactme.html">Contact Me</a>
 </nav>
-<hr>
 
 <main class="clientMain">
-    <form class="qa" action="https://formspree.io/f/mzdorgge" method="POST">
-        <h2>Fill out this quick form for a free quote</h2>
-        <p>Required fields are labeled with a <span class="highlight">*</span></p>
-        <label for="name">Enter full name <span class="highlight">*</span></label>
-        <input type="text" id="name" name="name" required>
 
-        <label for="email">Enter email <span class="highlight">*</span></label>
-        <input type="email" id="email" name="email" required>
+  <header class="form-header fade-up">
+    <span class="section-label">// free quote</span>
+    <h1>Let's Work Together</h1>
+    <p>Fill out the form below and I'll get back to you within 24 hours. <span class="req">*</span> Required.</p>
+  </header>
 
-        <label for="business">Enter business name <span class="highlight">*</span></label>
-        <input type="text" id="business" name="business" required>
+  <form class="qa fade-up" style="animation-delay:0.15s" action="https://formspree.io/f/mzdorgge" method="POST">
 
-        <label for="url">Enter current website URL</label>
-        <input type="text" id="url" name="url">
+    <div class="field-row">
+      <div class="field-group">
+        <label for="name">Full Name <span class="req">*</span></label>
+        <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+      </div>
+      <div class="field-group">
+        <label for="email">Email <span class="req">*</span></label>
+        <input type="email" id="email" name="email" placeholder="jane@company.com" required>
+      </div>
+    </div>
 
-        <label for="service">Select a service <span class="highlight">*</span></label>
-        <select name="service" id="service" size="1" multiple required>
-            <option value="" disabled>Select at least one</option>
-            <option value="new">New Website</option>
-            <option value="redesign">Website Redesign</option>
-            <option value="audit">Security Audit</option>
-            <option value="maintenance">Maintenance/Hosting</option>
+    <div class="field-row">
+      <div class="field-group">
+        <label for="business">Business Name <span class="req">*</span></label>
+        <input type="text" id="business" name="business" placeholder="Acme Corp" required>
+      </div>
+      <div class="field-group">
+        <label for="url">Current Website URL</label>
+        <input type="text" id="url" name="url" placeholder="https://yoursite.com">
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field-group">
+        <label for="service">Service Needed <span class="req">*</span></label>
+        <select name="service" id="service" multiple required>
+          <option value="" disabled>Select at least one</option>
+          <option value="new">New Website</option>
+          <option value="redesign">Website Redesign</option>
+          <option value="audit">Security Audit</option>
+          <option value="maintenance">Maintenance / Hosting</option>
         </select>
-
-        <label for="timeline">Select a timeline <span class="highlight">*</span></label>
-        <select name="timeline" id="timeline" size="1" required>
-            <option value="" disabled selected>Select a timeline</option>
-            <option value="asap">ASAP</option>
-            <option value="one">1-3 months</option>
-            <option value="three">3-6 months</option>
-            <option value="six">6+ months</option>
+      </div>
+      <div class="field-group">
+        <label for="timeline">Timeline <span class="req">*</span></label>
+        <select name="timeline" id="timeline" required>
+          <option value="" disabled selected>Select a timeline</option>
+          <option value="asap">ASAP</option>
+          <option value="one">1–3 months</option>
+          <option value="three">3–6 months</option>
+          <option value="six">6+ months</option>
         </select>
+      </div>
+    </div>
 
-        <label for="requirements">Select other requirements</label>
-        <select name="requirements" id="requirements" size="1" multiple>
-            <option value="logins">User Accounts</option>
-            <option value="payments">Payment Processing</option>
-            <option value="forms">Contact Forms</option>
-            <option value="database">Database Storage</option>
+    <div class="field-row">
+      <div class="field-group">
+        <label for="requirements">Other Requirements</label>
+        <select name="requirements" id="requirements" multiple>
+          <option value="logins">User Accounts</option>
+          <option value="payments">Payment Processing</option>
+          <option value="forms">Contact Forms</option>
+          <option value="database">Database Storage</option>
         </select>
-
-        <label for="budget">Select budget range <span class="highlight">*</span></label>
-        <select name="budget" id="budget" size="1" required>
-            <option value="" disabled selected>Select budget range</option>
-            <option value="low">$250 - $500</option>
-            <option value="medium">$500 - $1,000</option>
-            <option value="high">$1,000 - $2,500</option>
-            <option value="extreme">$2,500+</option>
-            <option value="unknown">I'm not sure yet</option>
+      </div>
+      <div class="field-group">
+        <label for="budget">Budget Range <span class="req">*</span></label>
+        <select name="budget" id="budget" required>
+          <option value="" disabled selected>Select budget range</option>
+          <option value="low">$250 – $500</option>
+          <option value="medium">$500 – $1,000</option>
+          <option value="high">$1,000 – $2,500</option>
+          <option value="extreme">$2,500+</option>
+          <option value="unknown">I'm not sure yet</option>
         </select>
+      </div>
+    </div>
 
-        <label for="concerns">Security Concerns</label>
-        <input type="text" id="concerns" name="concerns">
+    <div class="field-group">
+      <label for="concerns">Security Concerns</label>
+      <input type="text" id="concerns" name="concerns" placeholder="Any specific vulnerabilities or compliance needs?">
+    </div>
 
-        <label for="other">Other Information</label>
-        <textarea id="other" name="other"></textarea>
+    <div class="field-group">
+      <label for="other">Other Information</label>
+      <textarea id="other" name="other" placeholder="Tell me more about your project, goals, or anything else relevant..."></textarea>
+    </div>
 
-        <button type="submit">Submit Form</button>
-    </form>
+    <div class="form-submit">
+      <button type="submit">Submit Request <i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+
+  </form>
 </main>
 
 <footer>
-    <div>
-        <h3>Noah Cosamano</h3>
-        <p>Cybersecurity Student & Web Developer.</p>
-        <p class="copyright">&copy; 2026 Noah Cosamano</p>
-    </div>
-    <div>
-        <ul>
-            <h3>Quick Links</h3>
-            <a href="index.html">Home</a>
-            <a href="cybersecurity.html">Cybersecurity</a>
-            <a href="webdev.html">Web Dev</a>
-            <a href="client.html">Become a Client</a>
-            <a href="contactme.html">Contact Me</a>
-        </ul>
-    </div>
-    <div>
-        <ul>
-            <h3>Get In Touch</h3>
-            <a href="contactme.html" target="_blank">
-                <i class="fa-solid fa-envelope"></i>bynoahcosamano@gmail.com
-            </a>
-            <a href="https://www.facebook.com/profile.php?id=61588930868883" target="_blank">
-                <i class="fa-brands fa-facebook"></i>noahcosamano
-            </a>
-            <a href="https://www.linkedin.com/in/noah-cosamano-043843384/" target="_blank">
-                <i class="fa-brands fa-linkedin"></i>noahcosamano
-            </a>
-            <a href="https://www.instagram.com/bynoahcosamano/" target="_blank">
-                <i class="fa-brands fa-instagram"></i>bynoahcosamano
-            </a>
-            <a href="https://www.x.com/bynoahcosamano/" target="_blank">
-                <i class="fa-brands fa-x-twitter"></i>bynoahcosamano
-            </a>
-            <a href="https://tinyurl.com/5d4n9275" target="_blank">
-                <i class="fa-solid fa-location-dot"></i>Syracuse, New York
-            </a>
-            <a href="index.html">
-                <i class="fa-solid fa-globe"></i>noahcosamano.com
-            </a>
-        </ul>
-    </div>
+  <div>
+    <h3>Noah Cosamano</h3>
+    <p>Cybersecurity Student &amp; Web Developer.</p>
+    <p class="copyright">&copy; 2026 Noah Cosamano</p>
+  </div>
+  <div>
+    <h3>Quick Links</h3>
+    <ul>
+      <a href="index.html">Home</a>
+      <a href="cybersecurity.html">Cybersecurity</a>
+      <a href="webdev.html">Web Dev</a>
+      <a href="client.html">Become a Client</a>
+      <a href="contactme.html">Contact Me</a>
+    </ul>
+  </div>
+  <div>
+    <h3>Get In Touch</h3>
+    <ul>
+      <a href="contactme.html" target="_blank"><i class="fa-solid fa-envelope"></i>bynoahcosamano@gmail.com</a>
+      <a href="https://www.facebook.com/profile.php?id=61588930868883" target="_blank"><i class="fa-brands fa-facebook"></i>noahcosamano</a>
+      <a href="https://www.linkedin.com/in/noah-cosamano-043843384/" target="_blank"><i class="fa-brands fa-linkedin"></i>noahcosamano</a>
+      <a href="https://www.instagram.com/bynoahcosamano/" target="_blank"><i class="fa-brands fa-instagram"></i>bynoahcosamano</a>
+      <a href="https://www.x.com/bynoahcosamano/" target="_blank"><i class="fa-brands fa-x-twitter"></i>bynoahcosamano</a>
+      <a href="https://tinyurl.com/5d4n9275" target="_blank"><i class="fa-solid fa-location-dot"></i>Syracuse, New York</a>
+      <a href="index.html"><i class="fa-solid fa-globe"></i>noahcosamano.com</a>
+    </ul>
+  </div>
 </footer>
-</body>
 
+</body>
 </html>

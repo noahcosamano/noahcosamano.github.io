@@ -1,152 +1,138 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Noah Cosamano - Home</title>
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="index.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noah Cosamano — Home</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 </head>
-
 <body>
+
 <nav>
-    <a class="active" href="index.html">Home</a>
-    <a href="cybersecurity.html">Cybersecurity</a>
-    <a href="webdev.html">Web Dev</a>
-    <a href="client.html">Become a Client</a>
-    <a href="contactme.html">Contact Me</a>
+  <a class="active" href="index.html">Home</a>
+  <a href="cybersecurity.html">Cybersecurity</a>
+  <a href="webdev.html">Web Dev</a>
+  <a href="client.html">Become a Client</a>
+  <a href="contactme.html">Contact Me</a>
 </nav>
 
 <main class="homeMain">
-    <h1>
-        Where Design Meets <span class="highlight">Security</span>
-    </h1>
-    <h2 class="goal">
-        Building robust, high-performance applications with a focus on seamless user experience.
-    </h2>
-    <a class="quote" href="client.html">Get a Free Quote<i class="fa-solid fa-arrow-right"></i></a>
 
-    <section class="rowOne">
-        <section class="aboutMe">
-            <img src="media/me.png" alt="Noah Cosamano">
-            <div class="content">
-                <h4>Hi, I'm</h4>
-                <h3>Noah Cosamano.</h3>
-                <p>
-                    I am a third-year Cybersecurity student at Rochester Institute of Technology,
-                    dedicated to building secure, resilient digital experiences.
-                </p>
-                <p>
-                    During my time in tech, I have found great interest and expertise in website 
-                    development, systems development, and scripting. I don't just build for
-                    functionality; I build for integrity. By combining modern web frameworks
-                    with a defensive mindset, I create digital solutions for users that are
-                    just as secure as they are user-friendly.</p>
-                <p>
-                    Whether I'm automating security tools with Python or architecting a front-end
-                    defense interface, my goal is always the same: 
-                    <b>
-                        to ensure that innovation never comes at the cost of security.
-                    </b>
-                </p>    
+  <!-- Hero -->
+  <section class="hero">
+    <span class="hero-eyebrow">// cybersecurity · web development</span>
+    <h1>Where Design<br>Meets <span class="accent">Security</span></h1>
+    <p class="hero-sub">
+      Building robust, high-performance applications with a focus on seamless user experience and defensive architecture.
+    </p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="client.html">Get a Free Quote <i class="fa-solid fa-arrow-right"></i></a>
+      <a class="btn-outline" href="cybersecurity.html">View Projects</a>
+    </div>
+  </section>
 
-            </div>
-        </section>
+  <!-- About / Resume / Socials grid -->
+  <section class="about-section">
 
-        <section class="resume">
-            <h3>Download My Resume</h3>
-            <i class="fa-regular fa-file-lines"></i>
-            <p>Noah-Cosamano-Resume.pdf</p>
-            <a href="media/Noah-Cosamano-Resume.pdf" download>
-                Download<i class="fa-solid fa-cloud-arrow-down"></i>
-            </a>
-        </section>
-    </section>
+    <div class="about-card fade-up">
+      <span class="section-label">// about me</span>
+      <div class="about-photo-wrap">
+        <img src="media/me.png" alt="Noah Cosamano">
+        <div class="about-meta">
+          <h3>Noah Cosamano</h3>
+          <h4>Cybersecurity Student &amp; Web Developer</h4>
+        </div>
+      </div>
+      <div class="about-body">
+        <p>I am a third-year Cybersecurity student at Rochester Institute of Technology, dedicated to building secure, resilient digital experiences.</p>
+        <p>I've found deep interest in website development, systems development, and scripting. I don't just build for functionality — I build for integrity. By combining modern web frameworks with a defensive mindset, I create digital solutions that are just as secure as they are user-friendly.</p>
+        <p><b>Whether I'm automating security tools with Python or architecting a front-end defense interface, my goal is always the same: to ensure that innovation never comes at the cost of security.</b></p>
+      </div>
+    </div>
 
-    <section class="rowTwo">
-        <section class="socials">
-            <ul>
-                <a href="https://www.facebook.com/profile.php?id=61588930868883" target="_blank">
-                    <i class="fa-brands fa-facebook"></i>Follow My Facebook
-                </a>
-                <a href="https://www.linkedin.com/in/noah-cosamano-043843384/" target="_blank">
-                    <i class="fa-brands fa-linkedin"></i>Connect With Me
-                </a>
-                <a href="https://www.instagram.com/bynoahcosamano/" target="_blank">
-                    <i class="fa-brands fa-instagram"></i>Follow My Instagram
-                </a>
-                <a href="https://www.x.com/bynoahcosamano/" target="_blank">
-                    <i class="fa-brands fa-x-twitter"></i>Find Me On X
-                </a>
-                <a href="contactme.html" target="_blank">
-                    <i class="fa-solid fa-envelope"></i>Email Me
-                </a>
-            </ul>
-        </section>
-    </section>
+    <div class="resume-card fade-up" style="animation-delay:0.1s">
+      <span class="section-label">// resume</span>
+      <div class="resume-icon"><i class="fa-regular fa-file-lines"></i></div>
+      <h3>Download My Resume</h3>
+      <p>Noah-Cosamano-Resume.pdf</p>
+      <a class="btn-primary" href="media/Noah-Cosamano-Resume.pdf" download>
+        Download <i class="fa-solid fa-cloud-arrow-down"></i>
+      </a>
+    </div>
 
-    <section class="rowThree">
-        <ul>
-            <i class="devicon-python-plain"><h5>Python</h5></i>
-            <i class="devicon-java-plain"><h5>Java</h5></i>
-            <i class="devicon-c-plain"><h5>C</h5></i>
-            <i class="devicon-bash-plain"><h5>Assembly</h5></i>
-            <i class="devicon-html5-plain"><h5>HTML</h5></i>
-            <i class="devicon-css3-plain"><h5>CSS</h5></i>
-            <i class="devicon-javascript-plain"><h5>JavaScript</h5></i>
-            <i class="devicon-linux-plain"><h5>Linux</h5></i>
-            <i class="devicon-windows8-plain"><h5>Windows</h5></i>
-        </ul>
-    </section>
+    <div class="socials-card fade-up" style="animation-delay:0.2s">
+      <span class="section-label">// find me online</span>
+      <div class="socials-grid">
+        <a href="https://www.facebook.com/profile.php?id=61588930868883" target="_blank">
+          <i class="fa-brands fa-facebook"></i>Facebook
+        </a>
+        <a href="https://www.linkedin.com/in/noah-cosamano-043843384/" target="_blank">
+          <i class="fa-brands fa-linkedin"></i>LinkedIn
+        </a>
+        <a href="https://www.instagram.com/bynoahcosamano/" target="_blank">
+          <i class="fa-brands fa-instagram"></i>Instagram
+        </a>
+        <a href="https://www.x.com/bynoahcosamano/" target="_blank">
+          <i class="fa-brands fa-x-twitter"></i>X / Twitter
+        </a>
+        <a href="contactme.html">
+          <i class="fa-solid fa-envelope"></i>Email Me
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Skills -->
+  <section class="skills-section fade-up" style="animation-delay:0.3s">
+    <h3>// tech stack</h3>
+    <div class="skills-track">
+      <div class="skill-chip"><i class="devicon-python-plain"></i>Python</div>
+      <div class="skill-chip"><i class="devicon-java-plain"></i>Java</div>
+      <div class="skill-chip"><i class="devicon-c-plain"></i>C</div>
+      <div class="skill-chip"><i class="devicon-bash-plain"></i>Assembly</div>
+      <div class="skill-chip"><i class="devicon-html5-plain"></i>HTML</div>
+      <div class="skill-chip"><i class="devicon-css3-plain"></i>CSS</div>
+      <div class="skill-chip"><i class="devicon-javascript-plain"></i>JavaScript</div>
+      <div class="skill-chip"><i class="devicon-linux-plain"></i>Linux</div>
+      <div class="skill-chip"><i class="devicon-windows8-plain"></i>Windows</div>
+    </div>
+  </section>
+
 </main>
 
 <footer>
-    <div>
-        <h3>Noah Cosamano</h3>
-        <p>Cybersecurity Student & Web Developer.</p>
-        <p class="copyright">&copy; 2026 Noah Cosamano</p>
-    </div>
-    <div>
-        <ul>
-            <h3>Quick Links</h3>
-            <a href="index.html">Home</a>
-            <a href="cybersecurity.html">Cybersecurity</a>
-            <a href="webdev.html">Web Dev</a>
-            <a href="client.html">Become a Client</a>
-            <a href="contactme.html">Contact Me</a>
-        </ul>
-    </div>
-    <div>
-        <ul>
-            <h3>Get In Touch</h3>
-            <a href="contactme.html" target="_blank">
-                <i class="fa-solid fa-envelope"></i>bynoahcosamano@gmail.com
-            </a>
-            <a href="https://www.facebook.com/profile.php?id=61588930868883" target="_blank">
-                <i class="fa-brands fa-facebook"></i>noahcosamano
-            </a>
-            <a href="https://www.linkedin.com/in/noah-cosamano-043843384/" target="_blank">
-                <i class="fa-brands fa-linkedin"></i>noahcosamano
-            </a>
-            <a href="https://www.instagram.com/bynoahcosamano/" target="_blank">
-                <i class="fa-brands fa-instagram"></i>bynoahcosamano
-            </a>
-            <a href="https://www.x.com/bynoahcosamano/" target="_blank">
-                <i class="fa-brands fa-x-twitter"></i>bynoahcosamano
-            </a>
-            <a href="https://tinyurl.com/5d4n9275" target="_blank">
-                <i class="fa-solid fa-location-dot"></i>Syracuse, New York
-            </a>
-            <a href="index.html">
-                <i class="fa-solid fa-globe"></i>noahcosamano.com
-            </a>
-        </ul>
-    </div>
+  <div>
+    <h3>Noah Cosamano</h3>
+    <p>Cybersecurity Student &amp; Web Developer.</p>
+    <p class="copyright">&copy; 2026 Noah Cosamano</p>
+  </div>
+  <div>
+    <h3>Quick Links</h3>
+    <ul>
+      <a href="index.html">Home</a>
+      <a href="cybersecurity.html">Cybersecurity</a>
+      <a href="webdev.html">Web Dev</a>
+      <a href="client.html">Become a Client</a>
+      <a href="contactme.html">Contact Me</a>
+    </ul>
+  </div>
+  <div>
+    <h3>Get In Touch</h3>
+    <ul>
+      <a href="contactme.html" target="_blank"><i class="fa-solid fa-envelope"></i>bynoahcosamano@gmail.com</a>
+      <a href="https://www.facebook.com/profile.php?id=61588930868883" target="_blank"><i class="fa-brands fa-facebook"></i>noahcosamano</a>
+      <a href="https://www.linkedin.com/in/noah-cosamano-043843384/" target="_blank"><i class="fa-brands fa-linkedin"></i>noahcosamano</a>
+      <a href="https://www.instagram.com/bynoahcosamano/" target="_blank"><i class="fa-brands fa-instagram"></i>bynoahcosamano</a>
+      <a href="https://www.x.com/bynoahcosamano/" target="_blank"><i class="fa-brands fa-x-twitter"></i>bynoahcosamano</a>
+      <a href="https://tinyurl.com/5d4n9275" target="_blank"><i class="fa-solid fa-location-dot"></i>Syracuse, New York</a>
+      <a href="index.html"><i class="fa-solid fa-globe"></i>noahcosamano.com</a>
+    </ul>
+  </div>
 </footer>
 
 </body>
-
 </html>

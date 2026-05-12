@@ -1,134 +1,105 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Noah Cosamano - Cybersecurity</title>
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="cybersecurity.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noah Cosamano — Cybersecurity</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="cybersecurity.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
 <body>
+
 <nav>
-    <a href="index.html">Home</a>
-    <a class="active" href="cybersecurity.html">Cybersecurity</a>
-    <a href="webdev.html">Web Dev</a>
-    <a href="client.html">Become a Client</a>
-    <a href="contactme.html">Contact Me</a>
+  <a href="index.html">Home</a>
+  <a class="active" href="cybersecurity.html">Cybersecurity</a>
+  <a href="webdev.html">Web Dev</a>
+  <a href="client.html">Become a Client</a>
+  <a href="contactme.html">Contact Me</a>
 </nav>
-<hr>
 
 <main class="cyberMain">
-    <section class="projects">
-        <section class="project">
-            <div class="content">
-                <h4 class="highlight">Cybersecurity Tool</h4>
-                <h3>AmanoWatch Intrusion Detection System</h3>
-                <p>
-                    An open-source Intrusion Detection System built for network enthusiasts, 
-                    penetration testers, and security professionals. It provides real-time detection of 
-                    threats including port scans, brute force attemots, ARP scans, ICMP ping sweeps, ARP 
-                    spoofing, DNS tunneling, ICMP tunneling, and honeyport connections — alongside a 
-                    lightweight interface to filter and view live and historical network traffic.
-                </p>
-                <div class="buttons">
-                    <a href="projects/amanowatch.html"><i class="fa-regular fa-eye"></i> View</a>
-                    <a href="https://github.com/noahcosamano/AmanoWatch" target="_blank">
-                        <i class="fa-brands fa-github"></i>GitHub Repo
-                    </a>
-                </div>
-            </div>
-            <img src="media/amanowatch.png" alt="AmanoWatch Image">
-        </section>
-        <section class="project">
-            <div class="content">
-                <h4 class="highlight">Forensic Report</h4>
-                <h3>Gh0stRat Forensic Report</h3>
-                <p>
-                    A professional, industry-standard forensic analysis report conducting an in-depth 
-                    examination of a 32-bit Trojan commonly identified as Gh0st RAT. The report 
-                    incorporates detailed static and dynamic analysis methodologies, supported by 
-                    proof-of-concept findings and annotated screenshots from widely used reverse 
-                    engineering and malware analysis tools, including Ghidra, x32dbg, and PE-bear.
-                </p>
-                <div class="buttons">
-                    <a href="projects/ghostrat.html"><i class="fa-regular fa-eye"></i> View</a>
-                    <a href="media/ghostrat-report.pdf" download>
-                        <i class="fa-solid fa-cloud-arrow-down"></i>Download PDF
-                    </a>
-                </div>
-            </div>
-            <img src="media/ghostrat.png" alt="forensic report">
-        </section>
-        <section class="project">
-            <div class="content">
-                <h4 class="highlight">Forensic Report</h4>
-                <h3>Buffer Overflow Forensic Report</h3>
-                <p>
-                    An in-depth, industry-style vulnerability assessment report examining how a common 
-                    buffer overflow exploit can escalate into a critical security threat through low-level 
-                    execution analysis. The report provides a detailed breakdown of exploit mechanics, 
-                    including stack manipulation, memory corruption, control flow hijacking, and payload 
-                    execution, supported by proof-of-concept demonstrations and annotated screenshots from 
-                    x32dbg.
-                </p>
-                <div class="buttons">
-                    <a href="projects/buffer.html"><i class="fa-regular fa-eye"></i> View</a>
-                    <a href="media/buffer-overflow-report.pdf" download>
-                        <i class="fa-solid fa-cloud-arrow-down"></i>Download PDF
-                    </a>
-                </div>
-            </div>
-            <img src="media/buffer.png" alt="forensic report">
-        </section>
-    </section>
+
+  <header class="page-header">
+    <span class="section-label">// cybersecurity</span>
+    <h1>Projects &amp; Research</h1>
+    <p>Hands-on work in malware forensics, exploit development, and network security tooling.</p>
+  </header>
+
+  <section class="projects">
+
+    <article class="project fade-up">
+      <div class="content">
+        <h4>Cybersecurity Tool</h4>
+        <h3>AmanoWatch Intrusion Detection System</h3>
+        <p>An open-source IDS built for network enthusiasts, penetration testers, and security professionals. Provides real-time detection of port scans, brute force attempts, ARP spoofing, DNS tunneling, ICMP tunneling, and honeyport connections — alongside a lightweight interface to filter and view live and historical network traffic.</p>
+        <div class="buttons">
+          <a href="projects/amanowatch.html"><i class="fa-regular fa-eye"></i> View</a>
+          <a href="https://github.com/noahcosamano/AmanoWatch" target="_blank"><i class="fa-brands fa-github"></i> GitHub Repo</a>
+        </div>
+      </div>
+      <img class="project-thumb" src="media/amanowatch.png" alt="AmanoWatch">
+    </article>
+
+    <article class="project fade-up" style="animation-delay:0.1s">
+      <div class="content">
+        <h4>Forensic Report</h4>
+        <h3>Gh0stRat Forensic Report</h3>
+        <p>A professional forensic analysis report conducting an in-depth examination of a 32-bit Trojan identified as Gh0st RAT. Incorporates detailed static and dynamic analysis, proof-of-concept findings, and annotated screenshots from Ghidra, x32dbg, and PE-bear.</p>
+        <div class="buttons">
+          <a href="projects/ghostrat.html"><i class="fa-regular fa-eye"></i> View</a>
+          <a href="media/ghostrat-report.pdf" download><i class="fa-solid fa-cloud-arrow-down"></i> Download PDF</a>
+        </div>
+      </div>
+      <img class="project-thumb" src="media/ghostrat.png" alt="Gh0stRat Report">
+    </article>
+
+    <article class="project fade-up" style="animation-delay:0.2s">
+      <div class="content">
+        <h4>Forensic Report</h4>
+        <h3>Buffer Overflow Forensic Report</h3>
+        <p>An industry-style vulnerability assessment examining how a stack-based buffer overflow escalates into a critical threat. Detailed breakdown of exploit mechanics — stack manipulation, memory corruption, control flow hijacking, and payload execution — supported by proof-of-concept demos and x32dbg screenshots.</p>
+        <div class="buttons">
+          <a href="projects/buffer.html"><i class="fa-regular fa-eye"></i> View</a>
+          <a href="media/buffer-overflow-report.pdf" download><i class="fa-solid fa-cloud-arrow-down"></i> Download PDF</a>
+        </div>
+      </div>
+      <img class="project-thumb" src="media/buffer.png" alt="Buffer Overflow Report">
+    </article>
+
+  </section>
+
 </main>
 
 <footer>
-    <div>
-        <h3>Noah Cosamano</h3>
-        <p>Cybersecurity Student & Web Developer.</p>
-        <p class="copyright">&copy; 2026 Noah Cosamano</p>
-    </div>
-    <div>
-        <ul>
-            <h3>Quick Links</h3>
-            <a href="index.html">Home</a>
-            <a href="cybersecurity.html">Cybersecurity</a>
-            <a href="webdev.html">Web Dev</a>
-            <a href="client.html">Become a Client</a>
-            <a href="contactme.html">Contact Me</a>
-        </ul>
-    </div>
-    <div>
-        <ul>
-            <h3>Get In Touch</h3>
-            <a href="contactme.html" target="_blank">
-                <i class="fa-solid fa-envelope"></i>bynoahcosamano@gmail.com
-            </a>
-            <a href="https://www.facebook.com/profile.php?id=61588930868883" target="_blank">
-                <i class="fa-brands fa-facebook"></i>noahcosamano
-            </a>
-            <a href="https://www.linkedin.com/in/noah-cosamano-043843384/" target="_blank">
-                <i class="fa-brands fa-linkedin"></i>noahcosamano
-            </a>
-            <a href="https://www.instagram.com/bynoahcosamano/" target="_blank">
-                <i class="fa-brands fa-instagram"></i>bynoahcosamano
-            </a>
-            <a href="https://www.x.com/bynoahcosamano/" target="_blank">
-                <i class="fa-brands fa-x-twitter"></i>bynoahcosamano
-            </a>
-            <a href="https://tinyurl.com/5d4n9275" target="_blank">
-                <i class="fa-solid fa-location-dot"></i>Syracuse, New York
-            </a>
-            <a href="index.html">
-                <i class="fa-solid fa-globe"></i>noahcosamano.com
-            </a>
-        </ul>
-    </div>
+  <div>
+    <h3>Noah Cosamano</h3>
+    <p>Cybersecurity Student &amp; Web Developer.</p>
+    <p class="copyright">&copy; 2026 Noah Cosamano</p>
+  </div>
+  <div>
+    <h3>Quick Links</h3>
+    <ul>
+      <a href="index.html">Home</a>
+      <a href="cybersecurity.html">Cybersecurity</a>
+      <a href="webdev.html">Web Dev</a>
+      <a href="client.html">Become a Client</a>
+      <a href="contactme.html">Contact Me</a>
+    </ul>
+  </div>
+  <div>
+    <h3>Get In Touch</h3>
+    <ul>
+      <a href="contactme.html" target="_blank"><i class="fa-solid fa-envelope"></i>bynoahcosamano@gmail.com</a>
+      <a href="https://www.facebook.com/profile.php?id=61588930868883" target="_blank"><i class="fa-brands fa-facebook"></i>noahcosamano</a>
+      <a href="https://www.linkedin.com/in/noah-cosamano-043843384/" target="_blank"><i class="fa-brands fa-linkedin"></i>noahcosamano</a>
+      <a href="https://www.instagram.com/bynoahcosamano/" target="_blank"><i class="fa-brands fa-instagram"></i>bynoahcosamano</a>
+      <a href="https://www.x.com/bynoahcosamano/" target="_blank"><i class="fa-brands fa-x-twitter"></i>bynoahcosamano</a>
+      <a href="https://tinyurl.com/5d4n9275" target="_blank"><i class="fa-solid fa-location-dot"></i>Syracuse, New York</a>
+      <a href="index.html"><i class="fa-solid fa-globe"></i>noahcosamano.com</a>
+    </ul>
+  </div>
 </footer>
-</body>
 
+</body>
 </html>

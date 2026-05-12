@@ -1,140 +1,210 @@
-/* Cybersecurity */
-.cyberMain .projects {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 50px;
+/* ============================================
+   NOAH COSAMANO — cybersecurity.css (Modernized)
+   ============================================ */
 
-    margin: auto;
-    margin-top: 100px;
-
-    width: 50%;
+.cyberMain {
+  position: relative;
+  z-index: 1;
 }
 
-.projects .project {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--elevated-surface);
-    padding: 20px;
+/* ── Page header ── */
+.page-header {
+  padding: 80px 40px 60px;
+  text-align: center;
+  position: relative;
+}
+
+.page-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--red-500), transparent);
+}
+
+.page-header h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  color: var(--text-0);
+  margin-top: 12px;
+}
+
+.page-header p {
+  color: var(--text-2);
+  font-size: 1rem;
+  max-width: 480px;
+  margin: 16px auto 0;
+  line-height: 1.7;
+}
+
+/* ── Projects list ── */
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 40px 120px;
+}
+
+/* ── Project card ── */
+.project {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: center;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+
+.project::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--red-500), transparent);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.project:hover {
+  border-color: var(--border-red);
+  box-shadow: var(--glow-md);
+  transform: translateY(-4px);
+}
+
+.project:hover::before {
+  opacity: 0.6;
+}
+
+.project .content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.project .content h4 {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--red-500);
+  margin: 0;
+}
+
+.project .content h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-0);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.project .content p {
+  color: var(--text-2);
+  font-size: 0.875rem;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.project .buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.project .buttons a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 0.8rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+}
+
+.project .buttons a:first-child {
+  background: var(--red-500);
+  color: #fff;
+}
+
+.project .buttons a:first-child:hover {
+  background: var(--red-400);
+  box-shadow: var(--glow-sm);
+  transform: translateY(-2px);
+}
+
+.project .buttons a:not(:first-child) {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-2);
+}
+
+.project .buttons a:not(:first-child):hover {
+  border-color: var(--border-red);
+  color: var(--red-400);
+  transform: translateY(-2px);
+}
+
+/* ── Project thumbnail ── */
+.project-thumb {
+  width: 220px;
+  height: 140px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  border: 1px solid var(--border);
+  filter: brightness(0.85) saturate(0.9);
+  transition: filter var(--transition), transform var(--transition), box-shadow var(--transition);
+  flex-shrink: 0;
+}
+
+.project:hover .project-thumb {
+  filter: brightness(1) saturate(1);
+  transform: scale(1.03) rotateY(0) rotateX(0);
+  box-shadow: var(--glow-md);
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .projects {
+    padding: 40px 20px 80px;
+  }
+
+  .project {
+    grid-template-columns: 1fr;
+    padding: 28px;
+  }
+
+  .project-thumb {
     width: 100%;
-    border: 2px solid var(--dark-red);
-    border-radius: 25px;
+    height: 180px;
+    order: -1;
+  }
 
-    box-shadow: 0 4px 6px var(--red-glow);
+  .project .buttons {
+    flex-direction: column;
+  }
 
-    transition: 0.3s ease;
-}
-
-.projects .project:hover {
-    transform: scale(1.03) translateY(-5px);
-    box-shadow: 0 8px 12px var(--red-glow);
-}
-
-.projects .project h4 {
-    font-size: 15px;
-}
-
-.projects .project h3 {
-    color: var(--primary-text);
-    margin: 0;
-}
-
-.projects .project p {
-    color: var(--primary-text);
-    margin-right: 25px;
-}
-
-.projects .project .buttons {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-}
-
-.projects .project .buttons a {
-    display: flex;
+  .project .buttons a {
     justify-content: center;
-    align-items: center;
-    gap: 5px;
-    text-decoration: none;
-    font-size: 18px;
+  }
 
-    width: 180px;
-    height: 50px;
-}
-
-.projects .project .buttons a:first-child {
-    background-color: var(--primary-red);
-    color: var(--primary-text);
-    border-radius: 10px;
-
-    box-shadow: 0 4px 6px var(--red-glow);
-
-    transition: 0.3s ease;
-}
-
-.projects .project .buttons a:not(:first-child) {
-    border: 2px solid var(--primary-red);
-    border-radius: 10px;
-    color: var(--secondary-text);
-
-    transition: 0.3s ease;
-}
-
-.projects .project .buttons a:hover {
-    transform: scale(1.05) translateY(-5px);
-
-    box-shadow: 0 8px 12px var(--red-glow);
-}
-
-.projects .project img {
-    display: block;
-    margin-left: auto;
-    height: 200px;
-    width: 300px;
-    border: 2px solid var(--red-glow);
-    border-radius: 15px;
-    
-    transform: rotateY(-10deg) rotateX(5deg);
-
-    transition: 0.5s ease;
-}
-
-.projects .project img:hover {
-    transform: rotateY(0deg) rotateX(0deg) scale(1.02);
-}
-
-@media screen and (max-width: 768px) {
-    .cyberMain .projects {
-        width: 90%;
-    }
-
-    .projects .project {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-    }
-
-    .projects .project .buttons {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-        width: 100%;
-    }
-
-    .projects .project .buttons a {
-        width: 100%;   
-        max-width: 280px; 
-        height: 55px; 
-    }
-
-    .projects .project img {
-        width: 100%;
-        max-width: 400px;
-        margin-top: 20px;
-        order: 2;
-    }
+  .page-header {
+    padding: 60px 24px 40px;
+  }
 }

@@ -1,98 +1,93 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Noah Cosamano - Contact Me</title>
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="contactme.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noah Cosamano — Contact Me</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="contactme.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
 <body>
+
 <nav>
-    <a href="index.html">Home</a>
-    <a href="cybersecurity.html">Cybersecurity</a>
-    <a href="webdev.html">Web Dev</a>
-    <a href="client.html">Become a Client</a>
-    <a class="active" href="contactme.html">Contact Me</a>
+  <a href="index.html">Home</a>
+  <a href="cybersecurity.html">Cybersecurity</a>
+  <a href="webdev.html">Web Dev</a>
+  <a href="client.html">Become a Client</a>
+  <a class="active" href="contactme.html">Contact Me</a>
 </nav>
-<hr>
 
 <main class="contactMain">
-    <form action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="1e2dc464-41cd-4c8f-ac93-7142f5f38e38">
-        <input id="name" placeholder="Enter your name" type="text" name="name" required>
-        <input id="email" placeholder="Enter your email" type="email" name="email" required>
-        <textarea id="message" placeholder="Enter your message" name="message" maxlength="2500" required></textarea>
-        <p id="charLeft">2500 Characters Remaining</p>
-        <button type="submit">Submit</button>
-    </form>
-    <div>
-        <ul>
-            <a href="https://www.facebook.com/profile.php?id=61588930868883" target="_blank">
-                <i class="fa-brands fa-facebook"></i>noahcosamano
-            </a>
-            <a href="https://www.linkedin.com/in/noah-cosamano-043843384/" target="_blank">
-                <i class="fa-brands fa-linkedin"></i>noahcosamano
-            </a>
-            <a href="https://www.instagram.com/bynoahcosamano/" target="_blank">
-                <i class="fa-brands fa-instagram"></i>bynoahcosamano
-            </a>
-            <a href="https://www.x.com/bynoahcosamano/" target="_blank">
-                <i class="fa-brands fa-x-twitter"></i>bynoahcosamano
-            </a>
-        </ul>
+
+  <!-- Left: form -->
+  <div class="contact-form-side fade-up">
+    <div class="form-header">
+      <span class="section-label">// contact</span>
+      <h1>Send Me<br>a Message</h1>
+      <p>Have a question, project idea, or just want to say hi? I'll get back to you within 24 hours.</p>
     </div>
+
+    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="1e2dc464-41cd-4c8f-ac93-7142f5f38e38">
+      <input type="text" id="name" name="name" placeholder="Your name" required>
+      <input type="email" id="email" name="email" placeholder="your@email.com" required>
+      <textarea id="message" name="message" placeholder="What's on your mind?" maxlength="2500" required></textarea>
+      <p class="char-count" id="charLeft">2500 characters remaining</p>
+      <button type="submit">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+    </form>
+  </div>
+
+  <!-- Right: info -->
+  <div class="contact-info-side fade-up" style="animation-delay:0.15s">
+    <div>
+      <span class="section-label">// let's connect</span>
+      <h2>Noah Cosamano</h2>
+      <p class="tagline">Cybersecurity Student &amp; Web Developer based in Syracuse, NY. Open to freelance projects, collaborations, and new opportunities.</p>
+      <div class="social-links">
+        <a href="mailto:bynoahcosamano@gmail.com"><i class="fa-solid fa-envelope"></i>bynoahcosamano@gmail.com</a>
+        <a href="https://www.linkedin.com/in/noah-cosamano-043843384/" target="_blank"><i class="fa-brands fa-linkedin"></i>linkedin.com/in/noah-cosamano</a>
+        <a href="https://www.facebook.com/profile.php?id=61588930868883" target="_blank"><i class="fa-brands fa-facebook"></i>facebook.com/noahcosamano</a>
+        <a href="https://www.instagram.com/bynoahcosamano/" target="_blank"><i class="fa-brands fa-instagram"></i>@bynoahcosamano</a>
+        <a href="https://www.x.com/bynoahcosamano/" target="_blank"><i class="fa-brands fa-x-twitter"></i>@bynoahcosamano</a>
+        <a href="https://tinyurl.com/5d4n9275" target="_blank"><i class="fa-solid fa-location-dot"></i>Syracuse, New York</a>
+      </div>
+    </div>
+  </div>
+
 </main>
 
 <footer>
-    <div>
-        <h3>Noah Cosamano</h3>
-        <p>Cybersecurity Student & Web Developer.</p>
-        <p class="copyright">&copy; 2026 Noah Cosamano</p>
-    </div>
-    <div>
-        <ul>
-            <h3>Quick Links</h3>
-            <a href="index.html">Home</a>
-            <a href="cybersecurity.html">Cybersecurity</a>
-            <a href="webdev.html">Web Dev</a>
-            <a href="client.html">Become a Client</a>
-            <a href="contactme.html">Contact Me</a>
-        </ul>
-    </div>
-    <div>
-        <ul>
-            <h3>Get In Touch</h3>
-            <a href="contactme.html" target="_blank">
-                <i class="fa-solid fa-envelope"></i>bynoahcosamano@gmail.com
-            </a>
-            <a href="https://www.facebook.com/profile.php?id=61588930868883" target="_blank">
-                <i class="fa-brands fa-facebook"></i>noahcosamano
-            </a>
-            <a href="https://www.linkedin.com/in/noah-cosamano-043843384/" target="_blank">
-                <i class="fa-brands fa-linkedin"></i>noahcosamano
-            </a>
-            <a href="https://www.instagram.com/bynoahcosamano/" target="_blank">
-                <i class="fa-brands fa-instagram"></i>bynoahcosamano
-            </a>
-            <a href="https://www.x.com/bynoahcosamano/" target="_blank">
-                <i class="fa-brands fa-x-twitter"></i>bynoahcosamano
-            </a>
-            <a href="https://tinyurl.com/5d4n9275" target="_blank">
-                <i class="fa-solid fa-location-dot"></i>Syracuse, New York
-            </a>
-            <a href="index.html">
-                <i class="fa-solid fa-globe"></i>noahcosamano.com
-            </a>
-        </ul>
-    </div>
+  <div>
+    <h3>Noah Cosamano</h3>
+    <p>Cybersecurity Student &amp; Web Developer.</p>
+    <p class="copyright">&copy; 2026 Noah Cosamano</p>
+  </div>
+  <div>
+    <h3>Quick Links</h3>
+    <ul>
+      <a href="index.html">Home</a>
+      <a href="cybersecurity.html">Cybersecurity</a>
+      <a href="webdev.html">Web Dev</a>
+      <a href="client.html">Become a Client</a>
+      <a href="contactme.html">Contact Me</a>
+    </ul>
+  </div>
+  <div>
+    <h3>Get In Touch</h3>
+    <ul>
+      <a href="contactme.html" target="_blank"><i class="fa-solid fa-envelope"></i>bynoahcosamano@gmail.com</a>
+      <a href="https://www.facebook.com/profile.php?id=61588930868883" target="_blank"><i class="fa-brands fa-facebook"></i>noahcosamano</a>
+      <a href="https://www.linkedin.com/in/noah-cosamano-043843384/" target="_blank"><i class="fa-brands fa-linkedin"></i>noahcosamano</a>
+      <a href="https://www.instagram.com/bynoahcosamano/" target="_blank"><i class="fa-brands fa-instagram"></i>bynoahcosamano</a>
+      <a href="https://www.x.com/bynoahcosamano/" target="_blank"><i class="fa-brands fa-x-twitter"></i>bynoahcosamano</a>
+      <a href="https://tinyurl.com/5d4n9275" target="_blank"><i class="fa-solid fa-location-dot"></i>Syracuse, New York</a>
+      <a href="index.html"><i class="fa-solid fa-globe"></i>noahcosamano.com</a>
+    </ul>
+  </div>
 </footer>
 
 <script src="contactme.js"></script>
 
 </body>
-
 </html>
