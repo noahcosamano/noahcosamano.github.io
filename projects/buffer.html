@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FML Server Exploit - Noah Cosamano</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="ghostrat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+<nav>
+    <a href="../index.html">Home</a>
+    <a href="../cybersecurity.html">Cybersecurity</a>
+    <a href="../webdev.html">Web Dev</a>
+    <a href="../client.html">Become a Client</a>
+    <a href="../contactme.html">Contact Me</a>
+</nav>
+
+<header class="project-detail-header">
+    <h4 class="highlight">Project Deep Dive</h4>
+    <h1 style="color:white">FML Server Buffer Overflow</h1>
+    <p class="goal" style="color:white">
+        A technical assessment of a stack-based buffer overflow vulnerability, resulting in 
+        remote code execution via a custom-crafted exploit.
+    </p>
+    
+    <div class="tech-stack">
+        <span class="tech-badge">Exploit Development</span>
+        <span class="tech-badge">C/C++</span>
+        <span class="tech-badge">Assembly (x86)</span>
+        <span class="tech-badge">Memory Forensics</span>
+        <span class="tech-badge">x32dbg</span>
+        <span class="tech-badge">Metasploit</span>
+        <span class="tech-badge">Fuzzing</span>
+        <span class="tech-badge">Shellcode</span>
+    </div>
+</header>
+
+<main class="project-container">
+    <div class="detail-grid">
+        <section class="detail-card">
+            <h3><i class="fa-solid fa-bug"></i> Vulnerability Discovery</h3>
+            <p style="color: var(--secondary-text);">
+                Through static analysis of the FML Server source code, I identified a critical flaw in the <code>isASCII()</code> function within <code>parse.c</code>. The server fails to perform bounds checking on user-supplied commands, allowing a 1000-byte buffer to be overrun.
+            </p>
+            <div class="buttons" style="margin-top: 20px;">
+                <a href="../media/buffer-overflow-report.pdf" download style="text-decoration: none; color: var(--primary-red); border: 1px solid var(--primary-red); padding: 10px 20px; border-radius: 10px; display: inline-block; transition: 0.3s;">
+                    <i class="fa-solid fa-file-pdf"></i> View Exploit Report
+                </a>
+            </div>
+        </section>
+
+        <section class="detail-card">
+            <h3><i class="fa-solid fa-microchip"></i> Exploit Components</h3>
+            <ul class="features-list">
+                <li><i class="fa-solid fa-circle"></i> <strong>Vulnerability:</strong> Stack-based Overflow</li>
+                <li><i class="fa-solid fa-circle"></i> <strong>Trigger:</strong> <code>HandleConnection()</code> Buffer</li>
+                <li><i class="fa-solid fa-circle"></i> <strong>Payload:</strong> Reverse TCP Shell</li>
+                <li><i class="fa-solid fa-circle"></i> <strong>Encoder:</strong> shikata_ga_nai</li>
+                <li><i class="fa-solid fa-circle"></i> <strong>Strategy:</strong> JMP ESP / NOP Sled</li>
+            </ul>
+        </section>
+    </div>
+
+    <section class="project-detail-section" style="margin-top: 50px;">
+        <div class="detail-grid" style="align-items: center;">
+            <div class="gui-content">
+                <h4 class="highlight">Memory Manipulation</h4>
+                <h3>Hijacking the Execution Flow</h3>
+                <p style="color: var(--secondary-text);">
+                    By utilizing <strong>x32dbg</strong> and custom fuzzing scripts, I determined the exact offset required to overwrite the <strong>EIP (Extended Instruction Pointer)</strong>. This allowed me to redirect the CPU to a <code>JMP ESP</code> instruction, jumping directly into my malicious payload.
+                </p>
+                <ul class="features-list">
+                    <li><i class="fa-solid fa-bolt"></i> <strong>Offset Calculation:</strong> Pinpointing the crash point in memory.</li>
+                    <li><i class="fa-solid fa-filter"></i> <strong>Bad Char Analysis:</strong> Identifying characters that break the exploit.</li>
+                    <li><i class="fa-solid fa-triangle-exclamation"></i> <strong>NOP Sled:</strong> Ensuring reliable execution of the shellcode.</li>
+                </ul>
+            </div>
+            <div class="gui-image-container">
+                <img src="../media/buffer_analysis.png" alt="x32dbg Buffer Overflow Debugging" style="width: 100%; border-radius: 15px; border: 2px solid var(--dark-red); box-shadow: 0 0 20px var(--red-glow);">
+            </div>
+        </div>
+
+        <div class="full-width-content">
+            <h3 style="color: var(--primary-text);"><i class="fa-solid fa-terminal"></i> Custom Payload Construction</h3>
+            <p style="color: var(--secondary-text);">
+                I used <code>msfvenom</code> to generate a <strong>Windows Reverse TCP Shell</strong>, specifically avoiding "Bad Characters" found during the assessment. The payload was encoded with <code>shikata_ga_nai</code> to bypass basic detection and ensure the shellcode remained functional within the targeted stack frame.
+            </p>
+            <div class="tech-stack" style="justify-content: flex-start;">
+                <span class="tech-badge">EIP Overwrite</span>
+                <span class="tech-badge">ESP Redirect</span>
+                <span class="tech-badge">Return-to-Stack</span>
+                <span class="tech-badge">Payload Encoding</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="full-width-content">
+        <h3 style="color: var(--primary-text);">Impact Assessment</h3>
+        <p style="color: var(--secondary-text);">
+            A successful exploit grants the attacker a full interactive shell on the server host. This allows for total system compromise, including unauthorized file access, lateral movement across the network, and the installation of persistent backdoors.
+        </p>
+    </section>
+
+    <div style="text-align: center;">
+        <a href="../cybersecurity.html" class="back-btn" style="text-decoration: none;">
+            <i class="fa-solid fa-arrow-left"></i> Back to Cybersecurity
+        </a>
+    </div>
+</main>
+
+<footer>
+    <div>
+        <h3>Noah Cosamano</h3>
+        <p>Cybersecurity Student & Web Developer.</p>
+        <p class="copyright">&copy; 2026 Noah Cosamano</p>
+    </div>
+    <div>
+        <ul>
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="cybersecurity.html">Cybersecurity</a>
+            <a href="webdev.html">Web Dev</a>
+            <a href="client.html">Become a Client</a>
+            <a href="contactme.html">Contact Me</a>
+        </ul>
+    </div>
+    <div>
+        <ul>
+            <h3>Get In Touch</h3>
+            <a href="contactme.html" target="_blank">
+                <i class="fa-solid fa-envelope"></i>bynoahcosamano@gmail.com
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61588930868883" target="_blank">
+                <i class="fa-brands fa-facebook"></i>noahcosamano
+            </a>
+            <a href="https://www.linkedin.com/in/noah-cosamano-043843384/" target="_blank">
+                <i class="fa-brands fa-linkedin"></i>noahcosamano
+            </a>
+            <a href="https://www.instagram.com/bynoahcosamano/" target="_blank">
+                <i class="fa-brands fa-instagram"></i>bynoahcosamano
+            </a>
+            <a href="https://www.x.com/bynoahcosamano/" target="_blank">
+                <i class="fa-brands fa-x-twitter"></i>bynoahcosamano
+            </a>
+            <a href="https://tinyurl.com/5d4n9275" target="_blank">
+                <i class="fa-solid fa-location-dot"></i>Syracuse, New York
+            </a>
+            <a href="index.html">
+                <i class="fa-solid fa-globe"></i>noahcosamano.com
+            </a>
+        </ul>
+    </div>
+</footer>
+</body>
+</html>
